@@ -276,3 +276,454 @@ var findDisappearedNumbers = function(nums) {
 
 // console.log("Test Case1: ", findDisappearedNumbers(nums1))
 // console.log("Test Case2: ", findDisappearedNumbers(nums2))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******
+ * REVIEW
+ * ******/
+
+
+
+
+/** Assign Cookies */
+// let g1 = [1,2,3];
+// let s1 = [1,1];
+
+// let g2 = [1,2];
+// let s2 = [1,2,3];
+
+var findContentChildren = function(g, s) {
+  let happyNum = 0;
+  for (let i = 0; i < Math.floor(g.length, s.length); i++) {
+    if (g[i] === s[i]) happyNum++
+  }
+  return happyNum;
+}
+
+// console.log("Test Case1:", findContentChildren(g1, s1));
+// console.log("Test Case2:", findContentChildren(g2, s2));
+
+
+
+
+
+
+
+
+/** Keyboard Row */
+let words1 = ["Hello","Alaska","Dad","Peace"];
+let words2 = ["omk"];
+let words3 = ["adsdf","sfd"];
+
+const firstRow =  ["q", "w", "e", "r", "t", "y", "u", "i", "o", 'p'];
+const secondRow =  ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
+const thirdRow =  ["z", "x", "c", "v", "b", "n", "m"];
+
+var findWords = function (words) {
+  let canType = [];
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i].toLowerCase()
+    if (canBeTyped(word, firstRow) || canBeTyped(word, secondRow) || canBeTyped(word, thirdRow)) {
+      canType.push(words[i])
+    }
+  }
+  return canType;
+}
+
+var canBeTyped = function (word, row) {
+  for (let i = 0; i < word.length; i++) {
+    if (!row.includes(word[i])) return false;
+  }
+  return true;
+}
+
+console.log("Test Case1:", findWords(words1));
+console.log("Test Case2:", findWords(words2));
+console.log("Test Case3:", findWords(words3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * MOST IMPORTANT TO STUDY
+ * 
+ * 
+ * Island Perimeter
+ * 
+ * 
+ * You are given row x col grid representing a map where grid[i][j] = 1 represents land and grid[i][j] = 0 represents water.
+
+Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells).
+
+The island doesn't have "lakes", meaning the water inside isn't connected to the water around the island. One cell is a square with side length 1. The grid is rectangular, width and height don't exceed 100. Determine the perimeter of the island.
+ * 
+ * 
+ */
