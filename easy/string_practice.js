@@ -400,20 +400,58 @@ var reversePhrase = function (phrase) {
 
 
 
+// let words1 = ["bella","label","roller"];
+// let words2 = ["cool","lock","cook"];
+
+var commonChars = function (words) {
+  let firstCharSet = words[0].split("");
+  let secCharSet = words[1].split("");
+  let commChars = [];
+  for (let i = 0; i < words[words.length - 1].length; i++) {
+    if (firstCharSet.includes(words[words.length - 1][i]) && secCharSet.includes(words[words.length - 1][i])) {
+      commChars.push(words[words.length - 1][i]);
+    }
+  }
+  return commChars;
+}
+
+// console.log("Test Case1:", commonChars(words1));
+// console.log("Test Case2:", commonChars(words2));
 
 
 
+/** Robot Return to Origin */
+// let moves1 = "UD";
+// let moves2 = "LL";
+// let moves3 = "RRDD";
+// let moves4 = "LDRRLRUULR";
 
+var judgeCircle = function (moves) {
+  let positionX = 0;
+  let positionY = 0;
+  for (let i = 0; i < moves.length; i++) {
+    let move = moves[i]
+    if (move === "U") {
+      positionY++
+    } else if (move === "D") {
+      positionY--
+    } else if (move === "L") {
+      positionX--
+    } else if (move === "R") {
+      positionX++
+    }
+  }
+  if (positionX === 0 && positionY === 0) {
+    return true
+  } else {
+    return false;
+  }
+}
 
-
-
-
-
-
-
-
-
-
+// console.log("Test Case1:", judgeCircle(moves1))
+// console.log("Test Case2:", judgeCircle(moves2))
+// console.log("Test Case3:", judgeCircle(moves3))
+// console.log("Test Case4:", judgeCircle(moves4))
 
 
 
