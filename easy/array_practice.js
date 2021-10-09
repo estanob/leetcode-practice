@@ -346,9 +346,9 @@ var findContentChildren = function(g, s) {
 
 
 /** Keyboard Row */
-let words1 = ["Hello","Alaska","Dad","Peace"];
-let words2 = ["omk"];
-let words3 = ["adsdf","sfd"];
+// let words1 = ["Hello","Alaska","Dad","Peace"];
+// let words2 = ["omk"];
+// let words3 = ["adsdf","sfd"];
 
 const firstRow =  ["q", "w", "e", "r", "t", "y", "u", "i", "o", 'p'];
 const secondRow =  ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
@@ -372,9 +372,9 @@ var canBeTyped = function (word, row) {
   return true;
 }
 
-console.log("Test Case1:", findWords(words1));
-console.log("Test Case2:", findWords(words2));
-console.log("Test Case3:", findWords(words3));
+// console.log("Test Case1:", findWords(words1));
+// console.log("Test Case2:", findWords(words2));
+// console.log("Test Case3:", findWords(words3));
 
 
 
@@ -383,8 +383,25 @@ console.log("Test Case3:", findWords(words3));
 
 
 
+// let nums1 = [7,1,5,4];
+// let nums2 = [9,4,3,2];
+// let nums3 = [1,5,2,10];
 
+var maximumDifference = function (nums) {
+  let maxDiff = 0;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (i < j && nums[i] < nums[j] && nums[j] - nums[i] > maxDiff) {
+        maxDiff = nums[j] - nums[i]
+      }
+    }
+  }
+  return maxDiff === 0 ? -1 : maxDiff;
+}
 
+// console.log("Test Case1:", maximumDifference(nums1));
+// console.log("Test Case2:", maximumDifference(nums2));
+// console.log("Test Case3:", maximumDifference(nums3));
 
 
 
@@ -392,270 +409,49 @@ console.log("Test Case3:", findWords(words3));
 
 
 
+/** Lemonade Change */
+// let bills1 = [5,5,5,10,20];
+// let bills2 = [5,5,10,10,20];
+// let bills3 = [5,5,10];
+// let bills4 = [10,10];
 
+var lemonadeChange = function (bills) {
+  let availableChange = {
+    5: 0,
+    10: 0,
+    20: 0,
+  }
 
+  for (let i = 0; i < bills.length; i++) {
+    let bill = bills[i];
+    if (bill === 5) {
+      availableChange[5] += 1;
+    } else if (bill === 10) {
+      availableChange[10] += 1
+      if (availableChange[5] >= 1) {
+        availableChange[5] -= 1
+      } else {
+        return false
+      }
+    } else if (bill === 20) {
+      availableChange[20] += 1
+      if (availableChange[5] >= 1 && availableChange[10] >= 1) {
+        availableChange[5] -= 1
+        availableChange[10] -= 1
+      } else if (availableChange[10] < 1 && availableChange[5] >= 3) {
+        availableChange[5] -= 3
+      } else {
+        return false
+      }
+    }
+  }
+  return true;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log("Test Case1:", lemonadeChange(bills1));
+// console.log("Test Case2:", lemonadeChange(bills2));
+// console.log("Test Case3:", lemonadeChange(bills3));
+// console.log("Test Case4:", lemonadeChange(bills4));
 
 
 
@@ -715,8 +511,43 @@ console.log("Test Case3:", findWords(words3));
 /**
  * MOST IMPORTANT TO STUDY
  * 
+ Maximum Units on a Truck
+ * let boxTypes1 = [[1,3],[2,2],[3,1]];
+ * let truckSize1 = 4;
+ * 
+ * let boxTypes2 = [[5,10],[2,5],[4,7],[3,9]];
+ * let truckSize2 = 10;
+ * 
+ * var maximumUnits = function (boxTypes, truckSize) {
+ *   boxTypes = boxTypes.sort((a, b) => b[1] - a[1]);
+ * 
+ *   let boxLimit = truckSize;
+ *   let maxUnits = 0;
+ *   for (let i = 0; i < boxTypes.length; i++) {
+ *     let box = boxTypes[i];
+ *     if (boxLimit > 0) {
+ *       if (box[0] <= boxLimit) {
+ *         maxUnits += (box[0] * box[1]);
+ *         boxLimit -= box[0];
+ *       } else if (box[0] > boxLimit) {
+ *         maxUnits += (boxLimit * box[1])
+ *         boxLimit = 0
+ *       }
+ *     }
+ *   }
+ *   return maxUnits;
+ * }
+ 
+ console.log("Test Case1:", maximumUnits(boxTypes1, truckSize1));
+ console.log("Test Case2:", maximumUnits(boxTypes2, truckSize2));
+ 
+ 
+ 
+ 
+ 
  * 
  * Island Perimeter
+  
  * 
  * 
  * You are given row x col grid representing a map where grid[i][j] = 1 represents land and grid[i][j] = 0 represents water.
