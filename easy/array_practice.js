@@ -457,47 +457,78 @@ var lemonadeChange = function (bills) {
 
 
 
+/** Kids With the Greatest Number of Candies */
+// let candies1 = [2,3,5,1,3];
+// let extraCandies1 = 3;
+
+// let candies2 = [4,2,1,1,2];
+// let extraCandies2 = 1;
+
+// let candies3 = [12,1,12];
+// let extraCandies3 = 10;
+
+var kidsWithCandies = function (candies, extraCandies) {
+  let extras = [];
+  const maxNum = findMax(candies);
+  for (let i = 0; i < candies.length; i++) {
+    let num = candies[i];
+    if (num + extraCandies >= maxNum) {
+      extras.push(true)
+    } else {
+      extras.push(false)
+    }
+  }
+  return extras;
+}
+
+var findMax = function (array) {
+  let biggest = array[0];
+  for (let i = 1; i < array.length; i++) {
+    let num = array[i];
+    if (num > biggest) {
+      biggest = num
+    }
+  }
+  return biggest;
+}
+
+// console.log("Test Case1:", kidsWithCandies(candies1, extraCandies1))
+// console.log("Test Case2:", kidsWithCandies(candies2, extraCandies2))
+// console.log("Test Case3:", kidsWithCandies(candies3, extraCandies3))
 
 
 
 
 
 
+/** Maximum Number of Balloons */
+// let text1 = "nlaebolko";
+// let text2 = "loonbalxballpoon";
+// let text3 = "leetcode";
 
+var maxNumberOfBalloons = function (text) {
+  let balloonCount = {};
 
+  for (let char of text) {
+    balloonCount[char] = (balloonCount[char] || 0) + 1
+  }
 
+  let howMany = 0;
+  while (balloonCount['b'] > 0 && balloonCount['a'] > 0 && balloonCount['l'] > 0 && balloonCount['o'] > 0 && balloonCount['n'] > 0) {
+    howMany++;
 
+    balloonCount['b']--;
+    balloonCount['a']--;
+    balloonCount['l'] -= 2;
+    balloonCount['o'] -= 2;
+    balloonCount['n']--;
+  }
+  return howMany;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log("Test Case1:", maxNumberOfBalloons(text1));
+// console.log("Test Case2:", maxNumberOfBalloons(text2));
+// console.log("Test Case3:", maxNumberOfBalloons(text3));
 
 
 
@@ -540,9 +571,6 @@ var lemonadeChange = function (bills) {
  
  console.log("Test Case1:", maximumUnits(boxTypes1, truckSize1));
  console.log("Test Case2:", maximumUnits(boxTypes2, truckSize2));
- 
- 
- 
  
  
  * 
