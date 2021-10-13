@@ -505,6 +505,7 @@ var findMax = function (array) {
 // let text1 = "nlaebolko";
 // let text2 = "loonbalxballpoon";
 // let text3 = "leetcode";
+// let text4 = "balon";
 
 var maxNumberOfBalloons = function (text) {
   let balloonCount = {};
@@ -514,14 +515,14 @@ var maxNumberOfBalloons = function (text) {
   }
 
   let howMany = 0;
-  while (balloonCount['b'] > 0 && balloonCount['a'] > 0 && balloonCount['l'] > 0 && balloonCount['o'] > 0 && balloonCount['n'] > 0) {
-    howMany++;
-
-    balloonCount['b']--;
+  while (balloonCount['a'] > 0 && balloonCount['b'] > 0 && balloonCount['l'] > 1 && balloonCount['n'] > 0 && balloonCount['o'] > 1) {
     balloonCount['a']--;
+    balloonCount['b']--;
     balloonCount['l'] -= 2;
-    balloonCount['o'] -= 2;
     balloonCount['n']--;
+    balloonCount['o'] -= 2;
+    
+    howMany++;
   }
   return howMany;
 }
@@ -529,6 +530,115 @@ var maxNumberOfBalloons = function (text) {
 // console.log("Test Case1:", maxNumberOfBalloons(text1));
 // console.log("Test Case2:", maxNumberOfBalloons(text2));
 // console.log("Test Case3:", maxNumberOfBalloons(text3));
+// console.log("Test Case4:", maxNumberOfBalloons(text4));
+
+
+
+
+
+
+
+/** Concatenation of Array */
+// let nums1 = [1,2,1];
+// let nums2 = [1,3,2,1];
+
+var getConcatenation = function (nums) {
+  let concatenated = [];
+  for (let i = 0; i < nums.length * 2; i++) {
+    concatenated.push(nums[(i + nums.length) % nums.length])
+  }
+  return concatenated;
+}
+
+// console.log("Test Case1:", getConcatenation(nums1));
+// console.log("Test Case2:", getConcatenation(nums2));
+
+
+
+
+/** Number of Good Pairs */
+// let nums1 = [1,2,3,1,1,3];
+// let nums2 = [1,1,1,1];
+// let nums3 = [1,2,3];
+
+var numIdenticalPairs = function (nums) {
+  let numPairs = 0;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (i < j && nums[i] === nums[j]) numPairs++
+    }
+  }
+  return numPairs;
+}
+
+// console.log("Test Case1:", numIdenticalPairs(nums1));
+// console.log("Test Case2:", numIdenticalPairs(nums2));
+// console.log("Test Case3:", numIdenticalPairs(nums3));
+
+
+
+
+/** Shuffle the Array */
+// let nums1 = [2,5,1,3,4,7];
+// let n1 = 3;
+
+// let nums2 = [1,2,3,4,4,3,2,1];
+// let n2 = 4;
+
+// let nums3 = [1,1,2,2];
+// let n3 = 2;
+
+var shuffle = function (nums, n) {
+  let shArr = [];
+  while (shArr <= nums.length) {
+    for (let i = 0; i < n; i++) {
+      shArr.push(nums[i], nums[i + n])
+    }
+  }
+  return shArr;
+}
+
+// console.log("Test Case1:", shuffle(nums1, n1));
+// console.log("Test Case2:", shuffle(nums2, n2));
+// console.log("Test Case3:", shuffle(nums3, n3));
+
+
+/** Richest Customer Weatlh */
+// let accounts1 = [[1,2,3],[3,2,1]];
+// let accounts2 = [[1,5],[7,3],[3,5]];
+// let accounts3 = [[2,8,7],[7,1,3],[1,9,5]]
+
+var maximumWealth = function (accounts) {
+  let maxWealth = 0;
+  for (let i = 0; i < accounts.length; i++) {
+    let account = accounts[i];
+    if (addUpWealth(account) > maxWealth) maxWealth = addUpWealth(account)
+  }
+  return maxWealth;
+}
+
+var addUpWealth = function (account) {
+  let wealth = 0;
+  for (let i = 0; i < account.length; i++) {
+    wealth += account[i];
+  }
+  return wealth;
+}
+
+// console.log("Test Case1:", maximumWealth(accounts1));
+// console.log("Test Case2:", maximumWealth(accounts2));
+// console.log("Test Case3:", maximumWealth(accounts3));
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -542,6 +652,74 @@ var maxNumberOfBalloons = function (text) {
 /**
  * MOST IMPORTANT TO STUDY
  * 
+ 
+ Find Greatest Common Divisor of Array
+ let nums1 = [2,5,6,9,10];
+ let nums2 = [7,5,6,8,3];
+ let nums3 = [3,3];
+ let nums4 = [1,1];
+ let nums5 = [6,7,9];
+ 
+ var findGCD = function (nums) {
+   const minNum = findMin(nums);
+   const maxNum = findMax(nums);
+   if (minNum === maxNum) {
+     return minNum;
+   }
+   for (let i = maxNum; i >= minNum; i--) {
+     if (minNum % i === 0 && maxNum % i === 0) {
+       return i;
+     } else {
+       return 1;
+     }
+   }
+ }
+ 
+ var findMin = function (nums) {
+   let minNum = nums[0];
+   for (let i = 1; i < nums.length; i++) {
+     let num = nums[i];
+     if (num < minNum) minNum = num;
+   }
+   return minNum;
+ }
+ 
+ var findMax = function (nums) {
+   let maxNum = nums[0];
+   for (let i = 1; i < nums.length; i++) {
+     let num = nums[i];
+     if (num > maxNum) maxNum = num;
+   }
+   return maxNum;
+ }
+ 
+ console.log("Test Case1:", findGCD(nums1));
+ console.log("Test Case2:", findGCD(nums2));
+ console.log("Test Case3:", findGCD(nums3));
+ console.log("Test Case4:", findGCD(nums4));
+ console.log("Test Case5:", findGCD(nums5));
+ 
+ 
+ Sum of All Odd Length Subrrays 
+ let arr1 = [1,4,2,5,3];
+ let arr2 = [1,2];
+ let arr3 = [10,11,12];
+ 
+ var sumOddLengthSubarrays = function (arr) {
+   let oddSum = 0;
+ 
+   
+ }
+ 
+ console.log("Test Case1:", sumOddLengthSubarrays(arr1));
+ console.log("Test Case2:", sumOddLengthSubarrays(arr2));
+ console.log("Test Case3:", sumOddLengthSubarrays(arr3));
+
+ 
+ 
+ 
+ 
+ 
  Maximum Units on a Truck
  * let boxTypes1 = [[1,3],[2,2],[3,1]];
  * let truckSize1 = 4;
