@@ -456,49 +456,31 @@ var judgeCircle = function (moves) {
 
 
 
+/** Reverse Words in a String III */
+// let s1 = "Let's take LeetCode contest";
+// let s2 = "God Ding";
 
+var reverseWords = function (s) {
+  let revWords = [];
+  let words = s.split(" ")
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i];
+    revWords.push(reverseWord(word))
+  }
+  return revWords.join(" ")
+}
 
+var reverseWord = function (word) {
+  let newWord = "";
+  for (let i = word.length - 1; i >= 0; i--) {
+    let char = word[i];
+    newWord += char;
+  }
+  return newWord;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log("Test Case:1", reverseWords(s1));
+// console.log("Test Case2:", reverseWords(s2));
 
 
 
@@ -521,6 +503,141 @@ var judgeCircle = function (moves) {
 /*************
  * NEED TO REVIEW
  * ******************/
+
+
+ 
+/** String Matching in an Array */
+// let words1 = ["mass","as","hero","superhero"];
+// let words2 = ["leetcode","et","code"];
+// let words3 = ["blue","green","bu"];
+
+var stringMatching = function (words) {
+  // let isSubstr = [];
+  // for (let i = 0; i < words.length; i++) {
+  //   for (let j = 0; j < words.length; j++) {
+  //     if (i < j && isSubstring(words[i], words[j])) {
+  //       if (words[i].length < words[j].length) {
+  //         isSubstr.push(words[i])
+  //       } else {
+  //         isSubstr.push(words[j])
+  //       }
+  //     }
+  //   }
+  // }
+  // return isSubstr;
+
+  return words.filter((word, i) => {
+    for (let j = 0; j < words.length; j++) {
+      if (i === j) {
+        continue;
+      }
+      if (words[j].includes(word)) {
+        return true;
+      }
+    }
+    return false;
+  })
+}
+
+// var isSubstring = function (word1, word2) {
+//   if (word1.length > word2.length) {
+//     for (let i = 0; i < (word1.length - word2.length); i++) {
+//       if (word1.substring(i, word2.length) === word2) {
+//         return true;
+//       }
+//     }
+//   } else {
+//     for (let i = 0; i < (word2.length - word1.length); i++) {
+//       if (word2.substring(i, word1.length) === word1) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
+// console.log("Test Case1:", stringMatching(words1));
+// console.log("Test Case2:", stringMatching(words2));
+// console.log("Test Case3:", stringMatching(words3));
+
+
+
+
+
+
+
+/** Check if a Word Occurs as a Prefix of Any Word */
+// let sentence1 = "i love eating burger", searchWord1 = "burg";
+// let sentence2 = "this problem is an easy problem", searchWord2 = "pro";
+// let sentence3 = "i am tired", searchWord3 = "you";
+// let sentence4 = "i use triple pillow", searchWord4 = "pill";
+// let sentence5 = "hello from the other side", searchWord5 = "they";
+
+var isPrefixOfWord = function (sentence, searchWord) {
+  let words = sentence.split(" ");
+  // let isFound = true;
+  // for (let i = 0; i < words.length; i++) {
+  //   let word = words[i]
+  //   for (let j = 0; j < word.length; j++) {
+  //     if (searchWord[j] !== word[j]) isFound = false;
+  //   }
+  // }
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].substring(0, searchWord.length) === searchWord) return i + 1
+  }
+  return -1;
+}
+
+// console.log("Test Case1:", isPrefixOfWord(sentence1, searchWord1));
+// console.log("Test Case2:", isPrefixOfWord(sentence2, searchWord2));
+// console.log("Test Case3:", isPrefixOfWord(sentence3, searchWord3));
+// console.log("Test Case4:", isPrefixOfWord(sentence4, searchWord4));
+// console.log("Test Case5:", isPrefixOfWord(sentence5, searchWord5));
+
+
+
+
+
+/** Merge Strings Alternately */
+// let word1 = "abc"; 
+// let word2 = "pqr";
+
+// let word3 = "ab"; 
+// let word4 = "pqrs";
+
+// let word5 = "abcd"; 
+// let word6 = "pq";
+
+var mergeAlternately = function (word1, word2) {
+  let mergedStr = "";
+  // let str1 = word1;
+  // let str2 = word2;
+  // for (let i = 0; i < Math.max(str1.length, str2.length); i++) {
+  //   if (str1[i] || str2) {
+  //     mergedStr += str1[i]
+  //     mergedStr += str2[i]
+  //   } else {
+  //     mergedStr += ""
+  //   }
+  // }
+  for (let i = 0; i < Math.max(word1.length, word2.length); i++) {
+    mergedStr += word1[i] || '';
+    mergedStr += word2[i] || '';
+  }
+  return mergedStr;
+}
+
+// console.log("Test Case1", mergeAlternately(word1, word2));
+// console.log("Test Case2", mergeAlternately(word3, word4));
+// console.log("Test Case3", mergeAlternately(word5, word6));
+
+
+
+
+
+
+
+
 /** Check if the Sentence is Paragram */
 // let sentence1 = "thequickbrownfoxjumpsoverthelazydog";
 // let sentence2 = "leetcode";
