@@ -637,6 +637,29 @@ var addUpWealth = function (account) {
 
 
 
+/** Count Number of Pairs with Absolute Difference K */
+// let nums1 = [1,2,2,1];
+// let k1 = 1;
+
+// let nums2 = [1,3];
+// let k2 = 3;
+
+// let nums3 = [3,2,1,5,4];
+// let k3 = 2;
+
+var countKDifference = function (nums, k) {
+  let howMany = 0;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (i < j && Math.abs(nums[i] - nums[j]) === k) howMany++
+    }
+  }
+  return howMany;
+}
+
+// console.log("Test Case1:", countKDifference(nums1, k1));
+// console.log("Test Case2:", countKDifference(nums2, k2));
+// console.log("Test Case3:", countKDifference(nums3, k3));
 
 
 
@@ -644,14 +667,226 @@ var addUpWealth = function (account) {
 
 
 
+/** Check if Two String Arrays are Equivalent */
+// let word1 = ["ab", "c"];
+// let word2 = ["a", "bc"];
+
+// let word3 = ["a", "cb"];
+// let word4 = ["ab", "c"];
+
+// let word5  = ["abc", "d", "defg"];
+// let word6 = ["abcddefg"];
+
+var arrayStringsAreEqual = function (word1, word2) {
+  return word1.join("") === word2.join("");
+}
+
+// console.log("Test Case1:", arrayStringsAreEqual(word1, word2));
+// console.log("Test Case2:", arrayStringsAreEqual(word3, word4));
+// console.log("Test Case3:", arrayStringsAreEqual(word5, word6));
 
 
 
 
+
+
+/** Sort Array by Parity */
+let nums1 = [3,1,2,4];
+let nums2 = [0];
+
+var sortArrayByParity = function (nums) {
+  if (nums.length === 0) return nums;
+  let sorted = [];
+  for (let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    if (num % 2 === 0) {
+      sorted.unshift(num)
+    } else {
+      sorted.push(num)
+    }
+  }
+  return sorted;
+}
+
+console.log("Test Case1:", sortArrayByParity(nums1));
+console.log("Test Case2:", sortArrayByParity(nums2));
 
 /**
  * MOST IMPORTANT TO STUDY
  * 
+ 
+
+ 
+ Sum of Unique Elements
+ // let nums1 = [1,2,3,2];
+ // let nums2 = [1,1,1,1,1];
+ // let nums3 = [1,2,3,4,5];
+ 
+ var sumOfUnique = function (nums) {
+   let elements = {}
+   let sum = 0;
+   for (let i = 0; i < nums.length; i++) {
+     let num = nums[i];
+     if (elements[num]) {
+       elements[num]++
+     } else {
+       elements[num] = 1
+     }
+   }
+   for (let key in elements) {
+     if (elements[key] === 1) sum += parseInt(key)
+   }
+   return sum;
+ }
+ 
+ // console.log("Test Case1:", sumOfUnique(nums1));
+ // console.log("Test Case2:", sumOfUnique(nums2));
+ // console.log("Test Case3:", sumOfUnique(nums3));
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Destination City
+ let paths1 = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]];
+ let paths2 = [["B","C"],["D","B"],["C","A"]];
+ let paths3 = [["A","Z"]];
+ 
+ var destCity = function (paths) {
+   // if (paths.length === 1) return paths[0][paths[0].length - 1]
+   // let cities = {};
+   // for (let i = 0; i < paths.length; i++) {
+   //   let path = paths[i];
+   //   for (let j = 0; j < path.length; j++) {
+   //     cities[path[j]] += 1
+   //   }
+   // }
+   // for (let city in cities) {
+   //   if (cities[city] === 1) return city
+   // }
+ 
+   let start = [];
+   let next = [];
+   for (let i = 0; i < paths.length; i++) {
+     let path = paths[i];
+     start.push(path[0]);
+     next.push(path[1]);
+   }
+ 
+   for (let i = 0; i < next.length; i++) {
+     let city = next[i];
+     if (!start.includes(city)) return city;
+   }
+ }
+ 
+ console.log("Test Case1:", destCity(paths1));
+ console.log("Test Case2:", destCity(paths2));
+ console.log("Test Case3:", destCity(paths3));
+
+ 
+ 
+ 
+ 
+ Count of Matches in Tournament
+ let n1 = 7;
+ let n2 = 14;
+ 
+ var numberOfMatches = function (n) {
+   let howManyMatches = 0;
+   let numTeams = n;
+   if (numTeams % 2 === 0) {
+     while (numTeams > 1) {
+       let numMatches = numTeams / 2; 
+       howManyMatches += numMatches
+       numTeams = numMatches
+     }
+   } else {
+     while (numTeams > 1) {
+       let numMatches = (numTeams - 1) / 2;
+       howManyMatches += numMatches;
+       numTeams = (numMatches + 1) - 1;
+     }
+   }
+   return howManyMatches;
+ }
+ 
+ console.log("Test Case1:", numberOfMatches(n1));
+ console.log("Test Case2:", numberOfMatches(n2));
+
+ 
+ 
+ 
+ 
+ Split a String in Balanced Strings
+ let s1 = "RLRRLLRLRL";
+ let s2 = "RLLLLRRRLR";
+ let s3 = "LLLLRRRR";
+ let s4 = "RLRRRLLRLL";
+ var balancedStringSplit = function (s) {
+ 
+   // let balanceCount = 0;
+   let rCount = 0, lCount = 0;
+   for (let i = 0; i < s.length; i++) {
+     if (s[i] === "R") {
+       rCount++
+     } else {
+       rCount--
+     }
+     if (rCount === 0) {
+       lCount++
+     }
+   }
+   return lCount
+   // return balanceCount;
+ }
+ 
+ // var determineBalance = function (s) {
+ //   let rCount = 0;
+ //   let lCount = 0;
+ //   for (let i = 0; i < )
+ // }
+ 
+ console.log("Test Case1", balancedStringSplit(s1));
+ console.log("Test Case2", balancedStringSplit(s2));
+ console.log("Test Case3", balancedStringSplit(s3));
+ console.log("Test Case4", balancedStringSplit(s4));
+ 
+ 
+ 
+ 
+ 
+ 
+ Create Target Array in the Given Order
+ let nums1 = [0,1,2,3,4];
+ let index1 = [0,1,2,2,1];
+ // [0,4,1,3,2];
+ 
+ let nums2 = [1,2,3,4,0];
+ let index2 = [0,1,2,3,0];
+ // [0,1,2,3,4];
+ 
+ let nums3 = [1];
+ let index3 = [0];
+ // [1];
+ 
+ var createTargetArray = function (nums, index) {
+   let targetArr = [];
+   for (let i = 0; i < nums.length; i++) {
+     targetArr.splice(index[i], 0, nums[i])
+   }
+   return targetArr;
+ }
+ 
+ console.log("Test Case1:", createTargetArray(nums1, index1));
+ console.log("Test Case2:", createTargetArray(nums2, index2));
+ console.log("Test Case3:", createTargetArray(nums3, index3));
+ 
+ 
+ 
+ 
  
  Find Greatest Common Divisor of Array
  let nums1 = [2,5,6,9,10];
@@ -715,7 +950,7 @@ var addUpWealth = function (account) {
  console.log("Test Case2:", sumOddLengthSubarrays(arr2));
  console.log("Test Case3:", sumOddLengthSubarrays(arr3));
 
- 
+
  
  
  
