@@ -421,10 +421,10 @@ var commonChars = function (words) {
 
 
 /** Robot Return to Origin */
-// let moves1 = "UD";
-// let moves2 = "LL";
-// let moves3 = "RRDD";
-// let moves4 = "LDRRLRUULR";
+let moves1 = "UD";
+let moves2 = "LL";
+let moves3 = "RRDD";
+let moves4 = "LDRRLRUULR";
 
 var judgeCircle = function (moves) {
   let positionX = 0;
@@ -441,17 +441,18 @@ var judgeCircle = function (moves) {
       positionX++
     }
   }
-  if (positionX === 0 && positionY === 0) {
-    return true
-  } else {
-    return false;
-  }
+  // if (positionX === 0 && positionY === 0) {
+  //   return true
+  // } else {
+  //   return false;
+  // }
+  return positionX === 0 && positionY === 0
 }
 
-// console.log("Test Case1:", judgeCircle(moves1))
-// console.log("Test Case2:", judgeCircle(moves2))
-// console.log("Test Case3:", judgeCircle(moves3))
-// console.log("Test Case4:", judgeCircle(moves4))
+console.log("Test Case1:", judgeCircle(moves1))
+console.log("Test Case2:", judgeCircle(moves2))
+console.log("Test Case3:", judgeCircle(moves3))
+console.log("Test Case4:", judgeCircle(moves4))
 
 
 
@@ -505,7 +506,7 @@ var reverseWord = function (word) {
  * ******************/
 
 
- 
+
 /** String Matching in an Array */
 // let words1 = ["mass","as","hero","superhero"];
 // let words2 = ["leetcode","et","code"];
