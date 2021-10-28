@@ -135,3 +135,32 @@ var moveElementToEnd = function (array, toMove) {
 
 
 
+
+
+/** Class Photo */
+let redShirtHeights1 = [5, 8, 1, 3, 4];
+let blueShirtHeights1 = [6, 9, 2, 4, 5];
+
+let redShirtHeights2 = [6, 9, 2, 4, 5];
+let blueShirtHeights2 = [5, 8, 1, 3, 4];
+
+let redShirtHeights3 = [6, 9, 2, 4, 5, 1];
+let blueShirtHeights3 = [5, 8, 1, 3, 4, 9];
+
+var classPhotos = function (redShirtHeights, blueShirtHeights) {
+  redShirtHeights = redShirtHeights.sort((a, b) => b - a);
+  blueShirtHeights = blueShirtHeights.sort((a, b) => b - a);
+  let firstRowColor = redShirtHeights[0] < blueShirtHeights[0] ? "RED" : 'BLUE'
+  for (let i = 0; i < redShirtHeights.length; i++) {
+    if (firstRowColor === "RED") {
+      if (redShirtHeights[i] >= blueShirtHeights[i]) return false;
+    } else {
+      if (redShirtHeights[i] <= blueShirtHeights[i]) return false;
+    }
+  }
+  return true;
+};
+
+console.log("Test Case1:", classPhotos(redShirtHeights1, blueShirtHeights1));
+console.log("Test Case2:", classPhotos(redShirtHeights2, blueShirtHeights2));
+console.log("Test Case3:", classPhotos(redShirtHeights3, blueShirtHeights3));
