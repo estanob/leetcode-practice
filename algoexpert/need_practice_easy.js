@@ -88,3 +88,45 @@ var spiralTraverse = function (array) {
 console.log("Test Case1:", spiralTraverse(array1));
 console.log("Test Case2:", spiralTraverse(array2));
 console.log("Test Case3:", spiralTraverse(array3));
+
+
+
+
+
+
+
+
+
+
+
+
+/** Generate Document */
+let characters1 = "Bste!hetsi ogEAxpelrt x ", document1 = "AlgoExpert is the Best!";
+let characters2 = "A", document2 = "a";
+let characters3 = "a hsgalhsa sanbjksbdkjba kjx", document3 = "";
+
+var generateDocument = function (characters, document) {
+  let charObj = {};
+  for (let char in characters) {
+    if (!charObj[char]) {
+      charObj[char] = 1;
+    } else {
+      charObj[char]++;
+    }
+  }
+  for (let docChar in document) {
+    if (charObj[docChar]) {
+      charObj[docChar]--
+    } else {
+      charObj[docChar] = -1;
+    }
+  }
+  for (let charKey in charObj) {
+    if (charObj[charKey] > 0 || charObj[charKey] < 0) return false;
+  }
+  return true;
+};
+
+console.log("Test Case1:", generateDocument(characters1, document1));
+console.log("Test Case2:", generateDocument(characters2, document2));
+console.log("Test Case3:", generateDocument(characters3, document3));

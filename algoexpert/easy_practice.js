@@ -42,13 +42,14 @@ var twoNumberSum = function (array, targetSum) {
 // let array6 = [5, 1, 22, 25, 6, -1, 8, 10], sequence6 = [25];
 
 var isValidSubsequence = function (array, sequence) {
-  if (sequence.length === 1) {
-    return array.includes(sequence[0]) ? true : false;
-  }
-  for (let i = 0; i < sequence.length - 1; i++) {
-    if (array.indexOf(sequence[i]) > array.indexOf(sequence[i + 1])) return false
-  }
-  return true;
+  // if (sequence.length === 1) {
+  //   return array.includes(sequence[0]) ? true : false;
+  // }
+  // for (let i = 0; i < sequence.length - 1; i++) {
+  //   if (array.indexOf(sequence[i]) > array.indexOf(sequence[i + 1])) return false
+  // }
+  // return true;
+
 }
 
 // console.log("Test Case1:", isValidSubsequence(array1, sequence1));
@@ -138,14 +139,14 @@ var moveElementToEnd = function (array, toMove) {
 
 
 /** Class Photo */
-let redShirtHeights1 = [5, 8, 1, 3, 4];
-let blueShirtHeights1 = [6, 9, 2, 4, 5];
+// let redShirtHeights1 = [5, 8, 1, 3, 4];
+// let blueShirtHeights1 = [6, 9, 2, 4, 5];
 
-let redShirtHeights2 = [6, 9, 2, 4, 5];
-let blueShirtHeights2 = [5, 8, 1, 3, 4];
+// let redShirtHeights2 = [6, 9, 2, 4, 5];
+// let blueShirtHeights2 = [5, 8, 1, 3, 4];
 
-let redShirtHeights3 = [6, 9, 2, 4, 5, 1];
-let blueShirtHeights3 = [5, 8, 1, 3, 4, 9];
+// let redShirtHeights3 = [6, 9, 2, 4, 5, 1];
+// let blueShirtHeights3 = [5, 8, 1, 3, 4, 9];
 
 var classPhotos = function (redShirtHeights, blueShirtHeights) {
   redShirtHeights = redShirtHeights.sort((a, b) => b - a);
@@ -161,6 +162,84 @@ var classPhotos = function (redShirtHeights, blueShirtHeights) {
   return true;
 };
 
-console.log("Test Case1:", classPhotos(redShirtHeights1, blueShirtHeights1));
-console.log("Test Case2:", classPhotos(redShirtHeights2, blueShirtHeights2));
-console.log("Test Case3:", classPhotos(redShirtHeights3, blueShirtHeights3));
+// console.log("Test Case1:", classPhotos(redShirtHeights1, blueShirtHeights1));
+// console.log("Test Case2:", classPhotos(redShirtHeights2, blueShirtHeights2));
+// console.log("Test Case3:", classPhotos(redShirtHeights3, blueShirtHeights3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Sorted Matrix */
+let matrix1 = [
+  [1, 4, 7, 12, 15, 1000],
+  [2, 5, 19, 31, 32, 1001],
+  [3, 8, 24, 33, 35, 1002],
+  [40, 41, 42, 44, 45, 1003],
+  [99, 100, 103, 106, 128, 1004]
+], target1 = 44
+
+let matrix2 = [
+  [1, 4, 7, 12, 15, 1000],
+  [2, 5, 19, 31, 32, 1001],
+  [3, 8, 24, 33, 35, 1002],
+  [40, 41, 42, 44, 45, 1003],
+  [99, 100, 103, 106, 128, 1004]
+], target2 = 1
+
+let matrix3 = [
+  [1, 4, 7, 12, 15, 1000],
+  [2, 5, 19, 31, 32, 1001],
+  [3, 8, 24, 33, 35, 1002],
+  [40, 41, 42, 44, 45, 1003],
+  [99, 100, 103, 106, 128, 1004]
+], target3 = 2
+
+let matrix4 = [
+  [1, 4, 7, 12, 15, 1000],
+  [2, 5, 19, 31, 32, 1001],
+  [3, 8, 24, 33, 35, 1002],
+  [40, 41, 42, 44, 45, 1003],
+  [99, 100, 103, 106, 128, 1004]
+], target4 = 4
+
+let matrix5 = [
+  [1, 4, 7, 12, 15, 1000],
+  [2, 5, 19, 31, 32, 1001],
+  [3, 8, 24, 33, 35, 1002],
+  [40, 41, 42, 44, 45, 1003],
+  [99, 100, 103, 106, 128, 1004]
+], target5 = 15
+
+let matrix6 = [
+  [1, 4, 7, 12, 15, 1000],
+  [2, 5, 19, 31, 32, 1001],
+  [3, 8, 24, 33, 35, 1002],
+  [40, 41, 42, 44, 45, 1003],
+  [99, 100, 103, 106, 128, 1004]
+], target6 = 12
+
+var searchInSortedMatrix = function (matrix, target) {
+  for (let i = 0; i < matrix.length; i++) {
+    let subArr = matrix[i]
+    for (let j = 0; j < subArr.length; j++) {
+      if (subArr[j] === target) return [i, j];
+    };
+  };
+  return [-1, -1];
+};
+
+console.log("Test Case1:", searchInSortedMatrix(matrix1, target1));
+console.log("Test Case2:", searchInSortedMatrix(matrix2, target2));
+console.log("Test Case3:", searchInSortedMatrix(matrix3, target3));
+console.log("Test Case4:", searchInSortedMatrix(matrix4, target4));
+console.log("Test Case5:", searchInSortedMatrix(matrix5, target5));
+console.log("Test Case6:", searchInSortedMatrix(matrix6, target6));
