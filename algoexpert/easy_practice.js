@@ -179,53 +179,53 @@ var classPhotos = function (redShirtHeights, blueShirtHeights) {
 
 
 /** Sorted Matrix */
-let matrix1 = [
-  [1, 4, 7, 12, 15, 1000],
-  [2, 5, 19, 31, 32, 1001],
-  [3, 8, 24, 33, 35, 1002],
-  [40, 41, 42, 44, 45, 1003],
-  [99, 100, 103, 106, 128, 1004]
-], target1 = 44
+// let matrix1 = [
+//   [1, 4, 7, 12, 15, 1000],
+//   [2, 5, 19, 31, 32, 1001],
+//   [3, 8, 24, 33, 35, 1002],
+//   [40, 41, 42, 44, 45, 1003],
+//   [99, 100, 103, 106, 128, 1004]
+// ], target1 = 44
 
-let matrix2 = [
-  [1, 4, 7, 12, 15, 1000],
-  [2, 5, 19, 31, 32, 1001],
-  [3, 8, 24, 33, 35, 1002],
-  [40, 41, 42, 44, 45, 1003],
-  [99, 100, 103, 106, 128, 1004]
-], target2 = 1
+// let matrix2 = [
+//   [1, 4, 7, 12, 15, 1000],
+//   [2, 5, 19, 31, 32, 1001],
+//   [3, 8, 24, 33, 35, 1002],
+//   [40, 41, 42, 44, 45, 1003],
+//   [99, 100, 103, 106, 128, 1004]
+// ], target2 = 1
 
-let matrix3 = [
-  [1, 4, 7, 12, 15, 1000],
-  [2, 5, 19, 31, 32, 1001],
-  [3, 8, 24, 33, 35, 1002],
-  [40, 41, 42, 44, 45, 1003],
-  [99, 100, 103, 106, 128, 1004]
-], target3 = 2
+// let matrix3 = [
+//   [1, 4, 7, 12, 15, 1000],
+//   [2, 5, 19, 31, 32, 1001],
+//   [3, 8, 24, 33, 35, 1002],
+//   [40, 41, 42, 44, 45, 1003],
+//   [99, 100, 103, 106, 128, 1004]
+// ], target3 = 2
 
-let matrix4 = [
-  [1, 4, 7, 12, 15, 1000],
-  [2, 5, 19, 31, 32, 1001],
-  [3, 8, 24, 33, 35, 1002],
-  [40, 41, 42, 44, 45, 1003],
-  [99, 100, 103, 106, 128, 1004]
-], target4 = 4
+// let matrix4 = [
+//   [1, 4, 7, 12, 15, 1000],
+//   [2, 5, 19, 31, 32, 1001],
+//   [3, 8, 24, 33, 35, 1002],
+//   [40, 41, 42, 44, 45, 1003],
+//   [99, 100, 103, 106, 128, 1004]
+// ], target4 = 4
 
-let matrix5 = [
-  [1, 4, 7, 12, 15, 1000],
-  [2, 5, 19, 31, 32, 1001],
-  [3, 8, 24, 33, 35, 1002],
-  [40, 41, 42, 44, 45, 1003],
-  [99, 100, 103, 106, 128, 1004]
-], target5 = 15
+// let matrix5 = [
+//   [1, 4, 7, 12, 15, 1000],
+//   [2, 5, 19, 31, 32, 1001],
+//   [3, 8, 24, 33, 35, 1002],
+//   [40, 41, 42, 44, 45, 1003],
+//   [99, 100, 103, 106, 128, 1004]
+// ], target5 = 15
 
-let matrix6 = [
-  [1, 4, 7, 12, 15, 1000],
-  [2, 5, 19, 31, 32, 1001],
-  [3, 8, 24, 33, 35, 1002],
-  [40, 41, 42, 44, 45, 1003],
-  [99, 100, 103, 106, 128, 1004]
-], target6 = 12
+// let matrix6 = [
+//   [1, 4, 7, 12, 15, 1000],
+//   [2, 5, 19, 31, 32, 1001],
+//   [3, 8, 24, 33, 35, 1002],
+//   [40, 41, 42, 44, 45, 1003],
+//   [99, 100, 103, 106, 128, 1004]
+// ], target6 = 12
 
 var searchInSortedMatrix = function (matrix, target) {
   for (let i = 0; i < matrix.length; i++) {
@@ -237,9 +237,184 @@ var searchInSortedMatrix = function (matrix, target) {
   return [-1, -1];
 };
 
-console.log("Test Case1:", searchInSortedMatrix(matrix1, target1));
-console.log("Test Case2:", searchInSortedMatrix(matrix2, target2));
-console.log("Test Case3:", searchInSortedMatrix(matrix3, target3));
-console.log("Test Case4:", searchInSortedMatrix(matrix4, target4));
-console.log("Test Case5:", searchInSortedMatrix(matrix5, target5));
-console.log("Test Case6:", searchInSortedMatrix(matrix6, target6));
+// console.log("Test Case1:", searchInSortedMatrix(matrix1, target1));
+// console.log("Test Case2:", searchInSortedMatrix(matrix2, target2));
+// console.log("Test Case3:", searchInSortedMatrix(matrix3, target3));
+// console.log("Test Case4:", searchInSortedMatrix(matrix4, target4));
+// console.log("Test Case5:", searchInSortedMatrix(matrix5, target5));
+// console.log("Test Case6:", searchInSortedMatrix(matrix6, target6));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Count Inversions */
+// let array1 = [2, 3, 3, 1, 9, 5, 6];
+// let array2 = [];
+// let array3 = [1, 2, 3, 4, 5, 6, -1];
+// let array4 = [0, 2, 4, 5, 76];
+// let array5 = [54, 1, 2, 3, 4];
+// let array6 = [1, 10, 2, 8, 3, 7, 4, 6, 5];
+
+var countInversions = function (array) {
+  let counts = 0;
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (i < j && array[i] > array[j]) counts++
+    }
+  }
+  return counts;
+};
+
+// console.log("Test Case1:", countInversions(array1));
+// console.log("Test Case2:", countInversions(array2));
+// console.log("Test Case3:", countInversions(array3));
+// console.log("Test Case4:", countInversions(array4));
+// console.log("Test Case5:", countInversions(array5));
+// console.log("Test Case6:", countInversions(array6));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Sorted Squared Array */
+// let array1 = [1, 2, 3, 5, 6, 8, 9];
+// let array2 = [1];
+// let array3 = [1, 2];
+// let array4 = [-5, -4, -3, -2, -1];
+// let array5 = [-10, -5, 0, 5, 10];
+
+var sortedSquaredArray = function (array) {
+  let sortedSquares = [];
+  for (let i = 0; i < array.length; i++) {
+    sortedSquares.push(array[i] * array[i])
+  }
+  return sortedSquares.sort((a, b) => a - b);
+};
+
+// console.log("Test Case1:", sortedSquaredArray(array1));
+// console.log("Test Case2:", sortedSquaredArray(array2));
+// console.log("Test Case3:", sortedSquaredArray(array3));
+// console.log("Test Case4:", sortedSquaredArray(array4));
+// console.log("Test Case5:", sortedSquaredArray(array5));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Nth Fibonacci */
+// let n1 = 6;
+// let n2 = 1;
+// let n3 = 2;
+// let n4 = 3;
+// let n5 = 4;
+// let n6 = 5;
+// let n7 = 8;
+
+var getNthFib = function (n) {
+  let fibs = [0 ,1];
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  while (fibs.length < n - 1) {
+    fibs.push(fibs[fibs.length - 1] + fibs[fibs.length - 2])
+  }
+  return fibs[fibs.length - 1]
+};
+
+// console.log("Test Case1:", getNthFib(n1));
+// console.log("Test Case2:", getNthFib(n2));
+// console.log("Test Case3:", getNthFib(n3));
+// console.log("Test Case4:", getNthFib(n4));
+// console.log("Test Case5:", getNthFib(n5));
+// console.log("Test Case6:", getNthFib(n6));
+// console.log("Test Case7:", getNthFib(n7));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Caesar Cipher Encryptor */
+// let string1 = "ovmqkwtujqmfkao", key1 = 52;
+// let string2 = "iwufqnkqkqoolxzzlzihqfm", key2 = 25;
+// let string3 = "mvklahvjcnbwqvtutmfafkwiuagjkzmzwgf", key3 = 7;
+const alphabet = ["a", "b", "c", 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+var caesarCipherEncryptor = function (string, key) {
+  let encryptedStr = "";
+  for (let i = 0; i < string.length; i++) {
+    let alpIdx = alphabet.indexOf(string[i]);
+    encryptedStr += alphabet[(alpIdx + key) % 26]
+  }
+  return encryptedStr;
+}
+
+// console.log("Test Case1:", caesarCipherEncryptor(string1, key1));
+// console.log("Test Case2:", caesarCipherEncryptor(string2, key2));
+// console.log("Test Case3:", caesarCipherEncryptor(string3, key3));
+
+
+
+
+
+
+
+
+
+
+
+/** Smallest Difference */
+let arrayOne1 = [-1, 5, 10, 20, 28, 3], arrayTwo1 = [26, 134, 135, 15, 17];
+let arrayOne2 = [-1, 5, 10, 20, 3], arrayTwo2 = [26, 134, 135, 15, 17];
+let arrayOne3 = [10, 0, 20, 25], arrayTwo3 = [1005, 1006, 1014, 1032, 1031];
+
+var smallestDifference = function (arrayOne, arrayTwo) {
+
+};
+
+console.log("Test Case1:", smallestDifference(arrayOne1, arrayTwo1));
+console.log("Test Case2:", smallestDifference(arrayOne2, arrayTwo2));
+console.log("Test Case3:", smallestDifference(arrayOne3, arrayTwo3));
