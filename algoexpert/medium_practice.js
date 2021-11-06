@@ -1,9 +1,9 @@
 /** Minimum Characters for Words */
-let words1 = ["this", "that", "did", "deed", "them!", "a"];
-let words2 = ["a", "abc", "ab", "boo"];
-let words3 = ["a"];
-let words4 = ["abc", "ab", "b", "bac", "c"];
-let words5 = ["!!!2", "234", "222", "432"];
+// let words1 = ["this", "that", "did", "deed", "them!", "a"];
+// let words2 = ["a", "abc", "ab", "boo"];
+// let words3 = ["a"];
+// let words4 = ["abc", "ab", "b", "bac", "c"];
+// let words5 = ["!!!2", "234", "222", "432"];
 
 var minimumCharactersForWords = function (words) {
   let minChars = {};
@@ -19,7 +19,6 @@ var minimumCharactersForWords = function (words) {
       }
     }
   }
-  console.log(minChars)
   for (let char in minChars) {
     for (let i = 0; i < minChars[char]; i++) {
       charsResult.push(char)
@@ -38,12 +37,11 @@ var getCharCount = function (string) {
       charCount[char] += 1
     };
   }
-  console.log("Char count in heper function", charCount)
   return charCount;
 };
 
-console.log("Test Case1:", minimumCharactersForWords(words1));
-console.log("Test Case2:", minimumCharactersForWords(words2));
-console.log("Test Case3:", minimumCharactersForWords(words3));
-console.log("Test Case4:", minimumCharactersForWords(words4));
-console.log("Test Case5:", minimumCharactersForWords(words5));
+// console.log("Test Case1:", minimumCharactersForWords(words1));
+// console.log("Test Case2:", minimumCharactersForWords(words2));
+// console.log("Test Case3:", minimumCharactersForWords(words3));
+// console.log("Test Case4:", minimumCharactersForWords(words4));
+// console.log("Test Case5:", minimumCharactersForWords(words5));

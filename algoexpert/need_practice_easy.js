@@ -47,27 +47,27 @@ var isMonotonic = function (array) {
 
 
 /** Spiral Traverse */
-let array1 = [
-  [1, 2, 3, 4],
-  [12, 13, 14, 5],
-  [11, 16, 15, 6],
-  [10, 9, 8, 7]
-];
+// let array1 = [
+//   [1, 2, 3, 4],
+//   [12, 13, 14, 5],
+//   [11, 16, 15, 6],
+//   [10, 9, 8, 7]
+// ];
 
-let array2 = [
-  [1, 2, 3],
-  [8, 9, 4],
-  [7, 6, 5]
-];
+// let array2 = [
+//   [1, 2, 3],
+//   [8, 9, 4],
+//   [7, 6, 5]
+// ];
 
-let array3 = [
-  [19, 32, 33, 34, 25, 8],
-  [16, 15, 14, 13, 12, 11],
-  [18, 31, 36, 35, 26, 9],
-  [1, 2, 3, 4, 5, 6],
-  [20, 21, 22, 23, 24, 7],
-  [17, 30, 29, 28, 27, 10]
-];
+// let array3 = [
+//   [19, 32, 33, 34, 25, 8],
+//   [16, 15, 14, 13, 12, 11],
+//   [18, 31, 36, 35, 26, 9],
+//   [1, 2, 3, 4, 5, 6],
+//   [20, 21, 22, 23, 24, 7],
+//   [17, 30, 29, 28, 27, 10]
+// ];
 
 var spiralTraverse = function (array) {
   let result = [];
@@ -85,9 +85,9 @@ var spiralTraverse = function (array) {
   return result;
 };
 
-console.log("Test Case1:", spiralTraverse(array1));
-console.log("Test Case2:", spiralTraverse(array2));
-console.log("Test Case3:", spiralTraverse(array3));
+// console.log("Test Case1:", spiralTraverse(array1));
+// console.log("Test Case2:", spiralTraverse(array2));
+// console.log("Test Case3:", spiralTraverse(array3));
 
 
 
@@ -101,9 +101,9 @@ console.log("Test Case3:", spiralTraverse(array3));
 
 
 /** Generate Document */
-let characters1 = "Bste!hetsi ogEAxpelrt x ", document1 = "AlgoExpert is the Best!";
-let characters2 = "A", document2 = "a";
-let characters3 = "a hsgalhsa sanbjksbdkjba kjx", document3 = "";
+// let characters1 = "Bste!hetsi ogEAxpelrt x ", document1 = "AlgoExpert is the Best!";
+// let characters2 = "A", document2 = "a";
+// let characters3 = "a hsgalhsa sanbjksbdkjba kjx", document3 = "";
 
 var generateDocument = function (characters, document) {
   let charObj = {};
@@ -127,6 +127,64 @@ var generateDocument = function (characters, document) {
   return true;
 };
 
-console.log("Test Case1:", generateDocument(characters1, document1));
-console.log("Test Case2:", generateDocument(characters2, document2));
-console.log("Test Case3:", generateDocument(characters3, document3));
+// console.log("Test Case1:", generateDocument(characters1, document1));
+// console.log("Test Case2:", generateDocument(characters2, document2));
+// console.log("Test Case3:", generateDocument(characters3, document3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Smallest Difference */
+// let arrayOne1 = [-1, 5, 10, 20, 28, 3], arrayTwo1 = [26, 134, 135, 15, 17];
+// let arrayOne2 = [-1, 5, 10, 20, 3], arrayTwo2 = [26, 134, 135, 15, 17];
+// let arrayOne3 = [10, 0, 20, 25], arrayTwo3 = [1005, 1006, 1014, 1032, 1031];
+
+var smallestDifference = function (arrayOne, arrayTwo) {
+
+};
+
+// console.log("Test Case1:", smallestDifference(arrayOne1, arrayTwo1));
+// console.log("Test Case2:", smallestDifference(arrayOne2, arrayTwo2));
+// console.log("Test Case3:", smallestDifference(arrayOne3, arrayTwo3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Depth-first Search */
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  };
+
+  addChild(name) {
+    this.children.push(new Node(name));
+    return this;
+  };
+
+  depthFirstSearch(array) {
+    // Write your code here.
+  };
+};

@@ -405,16 +405,38 @@ var caesarCipherEncryptor = function (string, key) {
 
 
 
+/** First Non-Repeating Character */
+let string1 =  "abcdcaf";
+let string2 =  "faadabcbbebdf";
+let string3 =  "a";
+let string4 =  "ab";
+let string5 = "faadabcbbebdf";
 
-/** Smallest Difference */
-let arrayOne1 = [-1, 5, 10, 20, 28, 3], arrayTwo1 = [26, 134, 135, 15, 17];
-let arrayOne2 = [-1, 5, 10, 20, 3], arrayTwo2 = [26, 134, 135, 15, 17];
-let arrayOne3 = [10, 0, 20, 25], arrayTwo3 = [1005, 1006, 1014, 1032, 1031];
-
-var smallestDifference = function (arrayOne, arrayTwo) {
-
+var firstNonRepeatingCharacter = function (string) {
+  let charIdx = {};
+  let singleCharIdxs = [];
+  for (let i = 0; i < string.length; i++) {
+    let char = string[i];
+    if (!charIdx[char]) {
+      charIdx[char] = [i]
+    } else {
+      charIdx[char].push(i)
+    }
+  }
+  for (let charIdxArr in charIdx) {
+    if (charIdx[charIdxArr].length < 2) {
+      singleCharIdxs.push(charIdx[charIdxArr][0])
+    }
+  };
+  if (singleCharIdxs.length > 0) {
+    return Math.min(...singleCharIdxs)
+  } else {
+    return -1
+  }
 };
 
-console.log("Test Case1:", smallestDifference(arrayOne1, arrayTwo1));
-console.log("Test Case2:", smallestDifference(arrayOne2, arrayTwo2));
-console.log("Test Case3:", smallestDifference(arrayOne3, arrayTwo3));
+console.log("Test Case1:", firstNonRepeatingCharacter(string1));
+console.log("Test Case2:", firstNonRepeatingCharacter(string2));
+console.log("Test Case3:", firstNonRepeatingCharacter(string3));
+console.log("Test Case4:", firstNonRepeatingCharacter(string4));
+console.log("Test Case5:", firstNonRepeatingCharacter(string5));
