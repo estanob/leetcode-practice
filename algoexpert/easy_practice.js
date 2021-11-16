@@ -406,11 +406,11 @@ var caesarCipherEncryptor = function (string, key) {
 
 
 /** First Non-Repeating Character */
-let string1 =  "abcdcaf";
-let string2 =  "faadabcbbebdf";
-let string3 =  "a";
-let string4 =  "ab";
-let string5 = "faadabcbbebdf";
+// let string1 =  "abcdcaf";
+// let string2 =  "faadabcbbebdf";
+// let string3 =  "a";
+// let string4 =  "ab";
+// let string5 = "faadabcbbebdf";
 
 var firstNonRepeatingCharacter = function (string) {
   let charIdx = {};
@@ -435,8 +435,8 @@ var firstNonRepeatingCharacter = function (string) {
   }
 };
 
-console.log("Test Case1:", firstNonRepeatingCharacter(string1));
-console.log("Test Case2:", firstNonRepeatingCharacter(string2));
-console.log("Test Case3:", firstNonRepeatingCharacter(string3));
-console.log("Test Case4:", firstNonRepeatingCharacter(string4));
-console.log("Test Case5:", firstNonRepeatingCharacter(string5));
+// console.log("Test Case1:", firstNonRepeatingCharacter(string1));
+// console.log("Test Case2:", firstNonRepeatingCharacter(string2));
+// console.log("Test Case3:", firstNonRepeatingCharacter(string3));
+// console.log("Test Case4:", firstNonRepeatingCharacter(string4));
+// console.log("Test Case5:", firstNonRepeatingCharacter(string5));

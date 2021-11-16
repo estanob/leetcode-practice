@@ -149,7 +149,10 @@ var generateDocument = function (characters, document) {
 // let arrayOne3 = [10, 0, 20, 25], arrayTwo3 = [1005, 1006, 1014, 1032, 1031];
 
 var smallestDifference = function (arrayOne, arrayTwo) {
+  for (let i = 0; i < arrayOne.length; i++) {
+    let numI = arrayOne[i];
 
+  }
 };
 
 // console.log("Test Case1:", smallestDifference(arrayOne1, arrayTwo1));
