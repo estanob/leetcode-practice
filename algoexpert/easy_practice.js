@@ -440,3 +440,114 @@ var firstNonRepeatingCharacter = function (string) {
 // console.log("Test Case3:", firstNonRepeatingCharacter(string3));
 // console.log("Test Case4:", firstNonRepeatingCharacter(string4));
 // console.log("Test Case5:", firstNonRepeatingCharacter(string5));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Binary Search */
+// let array1 = [0, 1, 21, 33, 45, 45, 61, 71, 72, 73], target1 = 33;
+// let array2 = [1, 5, 23, 111], target2 = 111;
+// let array3 = [1, 5, 23, 111], target3 = 5;
+// let array4 = [1, 5, 23, 111], target4 = 35;
+// let array5 = [0, 1, 21, 33, 45, 45, 61, 71, 72, 73], target5 = 0;
+
+const binarySearch = function (array, target) {
+  let lower = 0; 
+  let upper = array.length - 1;
+
+  while (lower <= upper) {
+    const middle = lower + Math.floor((upper - lower) / 2);
+
+    if (target === array[middle]) {
+      return middle;
+    }
+
+    if (target < array[middle]) {
+      upper = middle - 1;
+    } else {
+      lower = middle + 1;
+    }
+  }
+  return -1;
+};
+
+// console.log("Test Case1:", binarySearch(array1, target1));
+// console.log("Test Case2:", binarySearch(array2, target2));
+// console.log("Test Case3:", binarySearch(array3, target3));
+// console.log("Test Case4:", binarySearch(array4, target4));
+// console.log("Test Case5:", binarySearch(array5, target5));
+
+
+
+
+
+
+
+
+
+
+
+
+/** Find Three Largest Numbers */
+let array1 = [141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7];
+let array2 = [55, 7, 8];
+let array3 = [55, 43, 11, 3, -3, 10];
+let array4 = [7, 8, 3, 11, 43, 55];
+let array5 = [55, 7, 8, 3, 43, 11];
+let array6 = [-1, -2, -3, -7, -17, -27, -18, -541, -8, -7, 7];
+
+function findThreeLargestNumbers(array) {
+	if (array.length === 3) {
+		return array.sort((a, b) => (a < b) ? -1 : 1)
+  }
+  
+	let threeLargest = [array[0], array[1], array[2]];
+  for (let i = 0; i < array.length; i++) {
+    let num = array[i];
+    updateLargest(threeLargest, num);
+  };
+  return threeLargest;
+}
+
+var updateLargest = function (threeLargest, num) {
+  if (!threeLargest[2] || num > threeLargest[2]) {
+    shiftAndUpdate(threeLargest, num, 2);
+  } else if (!threeLargest[1] || num > threeLargest[1]) {
+    shiftAndUpdate(threeLargest, num, 1);
+  } else if (!threeLargest[0] || num > threeLargest[0]) {
+    shiftAndUpdate(threeLargest, num, 0);
+  };
+};
+
+var shiftAndUpdate = function (array, num, idx) {
+  for (let i = 0; i < (idx + 1); i++) {
+    if (i === idx) {
+      array[i] = num;
+    } else {
+      array[i] = array[i + 1];
+    };
+  };
+};
+
+console.log("Test Case1:", findThreeLargestNumbers(array1));
+console.log("Test Case2:", findThreeLargestNumbers(array2));
+console.log("Test Case3:", findThreeLargestNumbers(array3));
+console.log("Test Case4:", findThreeLargestNumbers(array4));
+console.log("Test Case5:", findThreeLargestNumbers(array5));
+console.log("Test Case6:", findThreeLargestNumbers(array6));

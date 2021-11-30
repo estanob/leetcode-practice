@@ -60,16 +60,28 @@ var getCharCount = function (string) {
 
 
 /** Array of Products */
-let array1 = [5, 1, 4, 2];
-let array2 = [1, 8, 6, 2, 4];
-let array3 = [-5, 2, -4, 14, -6];
-let array4 = [9, 3, 2, 1, 9, 5, 3, 2];
+// let array1 = [5, 1, 4, 2];
+// let array2 = [1, 8, 6, 2, 4];
+// let array3 = [-5, 2, -4, 14, -6];
+// let array4 = [9, 3, 2, 1, 9, 5, 3, 2];
 
 var arrayOfProducts = function (array) {
   
 };
 
-console.log("Test Case1", arrayOfProducts(array1));
-console.log("Test Case2", arrayOfProducts(array2));
-console.log("Test Case3", arrayOfProducts(array3));
-console.log("Test Case4", arrayOfProducts(array4));
+// console.log("Test Case1", arrayOfProducts(array1));
+// console.log("Test Case2", arrayOfProducts(array2));
+// console.log("Test Case3", arrayOfProducts(array3));
+// console.log("Test Case4", arrayOfProducts(array4));
+
+
+
+
+
+
+
+
+
+
+
+
