@@ -505,12 +505,12 @@ const binarySearch = function (array, target) {
 
 
 /** Find Three Largest Numbers */
-let array1 = [141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7];
-let array2 = [55, 7, 8];
-let array3 = [55, 43, 11, 3, -3, 10];
-let array4 = [7, 8, 3, 11, 43, 55];
-let array5 = [55, 7, 8, 3, 43, 11];
-let array6 = [-1, -2, -3, -7, -17, -27, -18, -541, -8, -7, 7];
+// let array1 = [141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7];
+// let array2 = [55, 7, 8];
+// let array3 = [55, 43, 11, 3, -3, 10];
+// let array4 = [7, 8, 3, 11, 43, 55];
+// let array5 = [55, 7, 8, 3, 43, 11];
+// let array6 = [-1, -2, -3, -7, -17, -27, -18, -541, -8, -7, 7];
 
 function findThreeLargestNumbers(array) {
 	if (array.length === 3) {
@@ -545,9 +545,84 @@ var shiftAndUpdate = function (array, num, idx) {
   };
 };
 
-console.log("Test Case1:", findThreeLargestNumbers(array1));
-console.log("Test Case2:", findThreeLargestNumbers(array2));
-console.log("Test Case3:", findThreeLargestNumbers(array3));
-console.log("Test Case4:", findThreeLargestNumbers(array4));
-console.log("Test Case5:", findThreeLargestNumbers(array5));
-console.log("Test Case6:", findThreeLargestNumbers(array6));
+// console.log("Test Case1:", findThreeLargestNumbers(array1));
+// console.log("Test Case2:", findThreeLargestNumbers(array2));
+// console.log("Test Case3:", findThreeLargestNumbers(array3));
+// console.log("Test Case4:", findThreeLargestNumbers(array4));
+// console.log("Test Case5:", findThreeLargestNumbers(array5));
+// console.log("Test Case6:", findThreeLargestNumbers(array6));
+
+
+
+
+
+
+
+
+
+
+
+
+let competitions1 = [
+  ["HTML", "Java"],
+  ["Java", "Python"],
+  ["Python", "HTML"]
+], results1 = [0, 1, 1];
+
+let competitions2 = [
+  ["HTML", "Java"],
+  ["Java", "Python"],
+  ["Python", "HTML"],
+  ["C#", "Python"],
+  ["Java", "C#"],
+  ["C#", "HTML"]
+], results2 = [0, 1, 1, 1, 0, 1];
+
+let competitions3 = [
+  ["Bulls", "Eagles"]
+], results3 = [1];
+
+let competitions4 = [
+  ["Bulls", "Eagles"],
+  ["Bulls", "Bears"],
+  ["Bears", "Eagles"]
+], results4 = [0, 0, 0];
+
+var tournamentWinner = function (competitions, results){
+  let resultObj = {};
+  for (let i = 0; i < competitions.length; i++) {
+    let competition = competitions[i];
+    let result = results[i];
+    if (result === 0) {
+      if (!resultObj[competition[1]]) {
+        resultObj[competition[1]] = 1
+      } else {
+        resultObj[competition[1]] += 1
+      }
+    } else {
+      if (!resultObj[competition[0]]) {
+        resultObj[competition[0]] = 1
+      } else {
+        resultObj[competition[0]] += 1
+      }
+    }
+  }
+  return tournamentAnalyzer(resultObj);
+};
+
+var tournamentAnalyzer = function (object) {
+  let highestScore = 0;
+  let winner;
+  for (let competitionWinner in object) {
+    if (object[competitionWinner] > highestScore) {
+      highestScore = object[competitionWinner];
+      winner = competitionWinner;
+    }
+  }
+  return winner;
+};
+
+console.log("Test Case1:", tournamentWinner(competitions1, results1));
+console.log("Test Case1:", tournamentWinner(competitions2, results2));
+console.log("Test Case1:", tournamentWinner(competitions3, results3));
+console.log("Test Case1:", tournamentWinner(competitions4, results4));
