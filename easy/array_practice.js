@@ -691,8 +691,8 @@ var arrayStringsAreEqual = function (word1, word2) {
 
 
 /** Sort Array by Parity */
-let nums1 = [3,1,2,4];
-let nums2 = [0];
+// let nums1 = [3,1,2,4];
+// let nums2 = [0];
 
 var sortArrayByParity = function (nums) {
   if (nums.length === 0) return nums;
@@ -708,8 +708,8 @@ var sortArrayByParity = function (nums) {
   return sorted;
 }
 
-console.log("Test Case1:", sortArrayByParity(nums1));
-console.log("Test Case2:", sortArrayByParity(nums2));
+// console.log("Test Case1:", sortArrayByParity(nums1));
+// console.log("Test Case2:", sortArrayByParity(nums2));
 
 /**
  * MOST IMPORTANT TO STUDY
@@ -743,6 +743,75 @@ console.log("Test Case2:", sortArrayByParity(nums2));
  // console.log("Test Case2:", sumOfUnique(nums2));
  // console.log("Test Case3:", sumOfUnique(nums3));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+ /** Find Peak Element */
+var findPeakElement = function (nums) {
+  if (nums[0] > nums[1]) return 0;
+  if (nums[nums.length - 1] > nums[nums.length - 2]) return nums.length - 1;
+  for (let i = 1; i < nums.length - 1; i++) {
+    let prevNum = nums[i - 1];
+    let nextNum = nums[i + 1];
+    let currNum = nums[i];
+    if (prevNum < currNum && currNum > nextNum) return i;
+  }
+}
+
+//  let nums1 = [1,2,3,1];
+//  let nums2 = [1,2,1,3,5,6,4];
+ 
+//  console.log("Test Case1:", findPeakElement(nums1));
+//  console.log("Test Case2:", findPeakElement(nums2));
+ 
+// Time Complexity: 
+// Space Complexity: 
+
+
+
+
  
  
  
@@ -750,7 +819,32 @@ console.log("Test Case2:", sortArrayByParity(nums2));
  
  
  
- Destination City
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /** Destination City
  let paths1 = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]];
  let paths2 = [["B","C"],["D","B"],["C","A"]];
  let paths3 = [["A","Z"]];
