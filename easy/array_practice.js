@@ -789,16 +789,31 @@ var sortArrayByParity = function (nums) {
  
 
  /** Find Peak Element */
-var findPeakElement = function (nums) {
-  if (nums[0] > nums[1]) return 0;
-  if (nums[nums.length - 1] > nums[nums.length - 2]) return nums.length - 1;
-  for (let i = 1; i < nums.length - 1; i++) {
-    let prevNum = nums[i - 1];
-    let nextNum = nums[i + 1];
-    let currNum = nums[i];
-    if (prevNum < currNum && currNum > nextNum) return i;
-  }
-}
+// var findPeakElement = function (nums) {
+//   /** O(N) solution: */
+//   // if (nums[0] > nums[1] || nums.length === 1) return 0;
+//   // if (nums[nums.length - 1] > nums[nums.length - 2]) return nums.length - 1;
+//   // for (let i = 1; i < nums.length - 1; i++) {
+//   //   let prevNum = nums[i - 1];
+//   //   let nextNum = nums[i + 1];
+//   //   let currNum = nums[i];
+//   //   if (prevNum < currNum && currNum > nextNum) return i;
+//   // }
+
+
+//   /** O(log(N)) solution: */
+//   let left = 0;
+//   let right = nums.length - 1;      // start at the ends
+//   while (left < right) {
+//     let mid = Math.floor((left + right) / 2); // cut the array in half
+//     if (nums[mid] > nums[mid + 1]) {
+//       right = mid; //
+//     } else {
+//       left = mid + 1;
+//     };
+//   };
+//   return left;
+// }
 
 //  let nums1 = [1,2,3,1];
 //  let nums2 = [1,2,1,3,5,6,4];
@@ -806,10 +821,6 @@ var findPeakElement = function (nums) {
 //  console.log("Test Case1:", findPeakElement(nums1));
 //  console.log("Test Case2:", findPeakElement(nums2));
  
-// Time Complexity: 
-// Space Complexity: 
-
-
 
 
  
