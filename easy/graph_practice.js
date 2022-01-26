@@ -64,22 +64,45 @@ var findJudge = function (n, trust) {
   //   }
   //   return i;
   // }
-  // return -1;
 
 
   /** borrowed solution */
   // n = 3, trust = [[1,3],[2,3],[3,1]]
-  const Trusted = new Array(n + 1).fill(0); // [0, 0, 0, 0]
-  for (let [i, j] of trust) { // [1, 3], [2, 3], [3, 1]
-    Trusted[i] -= 1; // [0, -1, 0, 1] [0, -1, -1, 2] [0, 0, -1, 1]
-    Trusted[j] += 1;
+  // const Trusted = new Array(n + 1).fill(0); // [0, 0, 0, 0]
+  // for (let [i, j] of trust) { // [1, 3], [2, 3], [3, 1]
+  //   Trusted[i] -= 1; // [0, -1, 0, 1] [0, -1, -1, 2] [0, 0, -1, 1]
+  //   Trusted[j] += 1;
+  // }
+  // for (let i = 1; i < Trusted.length; i++) { // Trusted = [0, 0, -1, 1]
+  //   if ((n - 1) === Trusted[i]) { // n = 3, n - 1 = 2
+  //     return i; // i = 1 -> Trusted[1] = 0, 0 = 2 ? false
+  //               // i = 2 -> Trusted[2] = -1, -1 = 2 ? false
+  //               // i = 3 -> Trusted[3] = 1, 1 = 2 ? false
+  //               // return -1
+  //   }
+  // }
+
+  /** attempted solution with object */
+  const trustedObject = {};
+  for (let [i, j] of trust) {
+    if (!trustedObject[i]) trustedObject[i] = 0;
+    if (trustedObject[i]) trustedObject[i] -= 1;
+    if (!trustedObject[j]) trustedObject[j] = 0;
+    if (trustedObject[j]) trustedObject[j] += 1;
+    // if (!trustedObject[i]) trustedObject[i] = -1;
+    // if (trustedObject[i]) trustedObject[i] -= 1;
+    // if (!trustedObject[j]) trustedObject[j] = 1;
+    // if (trustedObject[j]) trustedObject[j] += 1;
   }
-  for (let i = 1; i < Trusted.length; i++) { // Trusted = [0, 0, -1, 1]
-    if ((n - 1) === Trusted[i]) { // n = 3, n - 1 = 2
-      return i; // i = 1 -> Trusted[1] = 0, 0 = 2 ? false
-                // i = 2 -> Trusted[2] = -1, -1 = 2 ? false
-                // i = 3 -> Trusted[3] = 1, 1 = 2 ? false
-                // return -1
+
+  console.log("Trusted Object:", trustedObject)
+  
+  let k = 1;
+  while (k <= n) {
+    for (let person in trustedObject) {
+      k++
+      if (n === trustedObject[person]) return person
+      // if (n === trustedObject[person]) return trustedObject[person]
     }
   }
   return -1;
@@ -88,3 +111,4 @@ var findJudge = function (n, trust) {
 console.log("Test Case1:", findJudge(n1, trust1));
 console.log("Test Case2:", findJudge(n2, trust2));
 console.log("Test Case3:", findJudge(n3, trust3));
+console.log("Leetcode Test Case:", findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]]));
