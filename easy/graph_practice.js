@@ -50,9 +50,9 @@ var validPath = function (n, edges, source, destination) {
 
 
 /** Find the Town Judge */
-let n1 = 2, trust1 = [[1,2]];
-let n2 = 3, trust2 = [[1,3],[2,3]];
-let n3 = 3, trust3 = [[1,3],[2,3],[3,1]];
+// let n1 = 2, trust1 = [[1,2]];
+// let n2 = 3, trust2 = [[1,3],[2,3]];
+// let n3 = 3, trust3 = [[1,3],[2,3],[3,1]];
 
 var findJudge = function (n, trust) {
   /** attempted solution */
@@ -85,14 +85,14 @@ var findJudge = function (n, trust) {
   /** attempted solution with object */
   const trustedObject = {};
   for (let [i, j] of trust) {
-    if (!trustedObject[i]) trustedObject[i] = 0;
-    if (trustedObject[i]) trustedObject[i] -= 1;
-    if (!trustedObject[j]) trustedObject[j] = 0;
-    if (trustedObject[j]) trustedObject[j] += 1;
-    // if (!trustedObject[i]) trustedObject[i] = -1;
-    // if (trustedObject[i]) trustedObject[i] -= 1;
-    // if (!trustedObject[j]) trustedObject[j] = 1;
+    // if (!trustedObject[i]) trustedObject[i] = 0;
+    // if (trustefdObject[i]) trustedObject[i] -= 1;
+    // if (!trustedObject[j]) trustedObject[j] = 0;
     // if (trustedObject[j]) trustedObject[j] += 1;
+    if (!trustedObject[i]) trustedObject[i] = -1;
+    if (trustedObject[i]) trustedObject[i] -= 1;
+    if (!trustedObject[j]) trustedObject[j] = 1;
+    if (trustedObject[j]) trustedObject[j] += 1;
   }
 
   console.log("Trusted Object:", trustedObject)
@@ -108,7 +108,8 @@ var findJudge = function (n, trust) {
   return -1;
 };
 
-console.log("Test Case1:", findJudge(n1, trust1));
-console.log("Test Case2:", findJudge(n2, trust2));
-console.log("Test Case3:", findJudge(n3, trust3));
-console.log("Leetcode Test Case:", findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]]));
+// console.log("Test Case1:", findJudge(n1, trust1));
+// console.log("Test Case2:", findJudge(n2, trust2));
+// console.log("Test Case3:", findJudge(n3, trust3));
+// console.log("Leetcode Test Case:", findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]]));
+

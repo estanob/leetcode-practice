@@ -563,30 +563,30 @@ var shiftAndUpdate = function (array, num, idx) {
 
 
 
-let competitions1 = [
-  ["HTML", "Java"],
-  ["Java", "Python"],
-  ["Python", "HTML"]
-], results1 = [0, 1, 1];
+// let competitions1 = [
+//   ["HTML", "Java"],
+//   ["Java", "Python"],
+//   ["Python", "HTML"]
+// ], results1 = [0, 1, 1];
 
-let competitions2 = [
-  ["HTML", "Java"],
-  ["Java", "Python"],
-  ["Python", "HTML"],
-  ["C#", "Python"],
-  ["Java", "C#"],
-  ["C#", "HTML"]
-], results2 = [0, 1, 1, 1, 0, 1];
+// let competitions2 = [
+//   ["HTML", "Java"],
+//   ["Java", "Python"],
+//   ["Python", "HTML"],
+//   ["C#", "Python"],
+//   ["Java", "C#"],
+//   ["C#", "HTML"]
+// ], results2 = [0, 1, 1, 1, 0, 1];
 
-let competitions3 = [
-  ["Bulls", "Eagles"]
-], results3 = [1];
+// let competitions3 = [
+//   ["Bulls", "Eagles"]
+// ], results3 = [1];
 
-let competitions4 = [
-  ["Bulls", "Eagles"],
-  ["Bulls", "Bears"],
-  ["Bears", "Eagles"]
-], results4 = [0, 0, 0];
+// let competitions4 = [
+//   ["Bulls", "Eagles"],
+//   ["Bulls", "Bears"],
+//   ["Bears", "Eagles"]
+// ], results4 = [0, 0, 0];
 
 var tournamentWinner = function (competitions, results){
   let resultObj = {};
@@ -622,7 +622,82 @@ var tournamentAnalyzer = function (object) {
   return winner;
 };
 
-console.log("Test Case1:", tournamentWinner(competitions1, results1));
-console.log("Test Case1:", tournamentWinner(competitions2, results2));
-console.log("Test Case1:", tournamentWinner(competitions3, results3));
-console.log("Test Case1:", tournamentWinner(competitions4, results4));
+// console.log("Test Case1:", tournamentWinner(competitions1, results1));
+// console.log("Test Case1:", tournamentWinner(competitions2, results2));
+// console.log("Test Case1:", tournamentWinner(competitions3, results3));
+// console.log("Test Case1:", tournamentWinner(competitions4, results4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Find Closest Value in BST */
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  };
+};
+
+const root1 = new BST(10);
+root1.left = new BST(5);
+root1.left.left = new BST(2);
+root1.left.left.left = new BST(1);
+root1.left.right = new BST(5);
+root1.right = new BST(15);
+root1.right.left = new BST(13);
+root1.right.left.right = new BST(14);
+root1.right.right = new BST(22);
+let target1 = 12;
+
+var findClosestValueInBst = function (tree, target) {
+  if (tree.value === target) return target;
+  if (!tree) return target;
+  if (tree.value < target) {
+    return findClosestValueInBst(tree.right, target);
+  } else {
+    return findClosestValueInBst(tree.left, target);
+  };
+};
+
+console.log("Test Case:", findClosestValueInBst(root1, target1))
