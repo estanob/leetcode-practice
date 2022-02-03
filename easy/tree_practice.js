@@ -9,15 +9,19 @@ class TreeNode {
 }
 
 var isSameTree = function(p, q) {
-  if (!p || !q) return p === q
-  if (p.val === q.val) return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
-  return false;
+  const pArr = [p.val, p.left, p.right];
+  const qArr = [q.val, q.left, q.right];
+  let isSame = true;
+  for (let i = 0; i < pArr.length; i++) {
+    if (pArr[i] !== qArr[i]) isSame = false;
+  }
+  return isSame;
 };
 
-let p1 = [1,2,3], q1 = [1,2,3];
-let p2 = [1,2], q2 = [1,null,2];
-let p3 = [1,2,1], q3 = [1,1,2];
+const p1 = new TreeNode (1, 2, 3), q1 = new TreeNode (1, 2, 3);
+const p2 = new TreeNode (1, 2), q2 = new TreeNode (1, null, 2);
+const p3 = new TreeNode (1, 2, 1), q3 = new TreeNode (1, 1, 2);
 
-console.log("Test Case1:", isSameTree(new TreeNode (...p1), new TreeNode (...q1)));
-console.log("Test Case2:", isSameTree(new TreeNode (...p2), new TreeNode (...q2)));
-console.log("Test Case3:", isSameTree(new TreeNode (...p3), new TreeNode (...q3)));
+console.log("Test Case1:", isSameTree(p1, q1));
+console.log("Test Case2:", isSameTree(p2, q2));
+console.log("Test Case3:", isSameTree(p3, q3));
