@@ -34,21 +34,21 @@ var validWordSquare = function (words) { // words = [ “ball”, “area”, �
 	return true; */
 	
 
-	for (let i = 0; i < words.length; i++) {
-    let refWord = words[i];
-    let refString = getRefString(refWord, i);
-    console.log("Reference word:", refWord.slice(i + 1), "Reference String:", refString)
-		if (refWord.slice(i + 1) !== refString) return false
+	for (let i = 0; i < words.length - 1; i++) {
+    let refWord = words[i].slice(i);
+    let refString = getRefString(words, i);
+    // console.log("Reference word:", refWord, "Reference String:", refString)
+		if (refWord !== refString) return false
   }
   return true;
 };
 
-var getRefString = function (refWord, idx) {
+var getRefString = function (words, idx) {
 	let result = "";
-	for (let i = idx; i < refWord.length; i++) {
-		result += refWord[i];
+	for (let i = idx; i < words.length; i++) {
+		if (words[i][idx]) result += words[i][idx];
   }
-  console.log("Result String:", result)
+  // console.log("Result String:", result)
 	return result;
 }
 
