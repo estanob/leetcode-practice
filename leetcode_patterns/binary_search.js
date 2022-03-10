@@ -19,12 +19,12 @@ const findGreatestLetter = function (letters, target) {
   return letters[0];
 }
 
-let letters1 = ["c","f","j"], target1 = "a";
-let letters2 = ["c","f","j"], target2 = "c";
-let letters3 = ["c","f","j"], target3 = "d";
-let letters4 = ["a", "b"], target4 = "z";
+// let letters1 = ["c","f","j"], target1 = "a";
+// let letters2 = ["c","f","j"], target2 = "c";
+// let letters3 = ["c","f","j"], target3 = "d";
+// let letters4 = ["a", "b"], target4 = "z";
 
-console.log("Test Case1:", findGreatestLetter(letters1, target1));
-console.log("Test Case2:", findGreatestLetter(letters2, target2));
-console.log("Test Case3:", findGreatestLetter(letters3, target3));
-console.log("Test Case4:", findGreatestLetter(letters4, target4));
+// console.log("Test Case1:", findGreatestLetter(letters1, target1));
+// console.log("Test Case2:", findGreatestLetter(letters2, target2));
+// console.log("Test Case3:", findGreatestLetter(letters3, target3));
+// console.log("Test Case4:", findGreatestLetter(letters4, target4));
