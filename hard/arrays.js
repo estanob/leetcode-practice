@@ -19,7 +19,9 @@ var firstMissingPositive = function (nums) {
   let firstMissing = 1;
   for (let i = 0; i < nums.length; i++) {
     let num = nums[i];
-    hash[num] = true;
+    if (num > 0) {
+      hash[num] = true;
+    }
   };
 
   for (let j = 1; j <= nums.length + 1; j++) {
