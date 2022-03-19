@@ -85,3 +85,37 @@ var arrayOfProducts = function (array) {
 
 
 
+/** Monotonic Array */
+var isMonotonic = function (array) {
+  if (array.length <= 2) return true;
+  if (array[0] < array[1]) {
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] > array[i + 1]) {
+        return false;
+      };
+    };
+  } else if (array[0] > array[1]) {
+    for (let i = 1; i < array.length; i++) {
+      if (array[i] < array[i + 1]) {
+        return false;
+      };
+    };
+  };
+  return true;
+};
+
+let array1 = [-1, -5, -10, -1100, -1100, -1101, -1102, -9001];
+let array2 = [];
+let array3 = [1];
+let array4 = [1, 5, 10, 1100, 1101, 1102, 9001];
+let array5 = [1, 2, 0];
+let array6 = [-1, -1, -2, -3, -4, -5, -5, -5, -6, -7, -8, -8, -9, -10, -11];
+let array7 = [1, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 7, 9, 10, 11];
+
+console.log("Test Case1:", isMonotonic(array1));
+console.log("Test Case2:", isMonotonic(array2));
+console.log("Test Case3:", isMonotonic(array3));
+console.log("Test Case4:", isMonotonic(array4));
+console.log("Test Case5:", isMonotonic(array5));
+console.log("Test Case6:", isMonotonic(array6), "This is supposed to return true");
+console.log("Test Case7:", isMonotonic(array7), "This is supposed to return false");

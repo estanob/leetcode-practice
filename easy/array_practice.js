@@ -26,9 +26,9 @@ var containsDuplicate = function(nums) {
   return false;
 };
 
-console.log("Test Case1: ", containsDuplicate(nums1));
-console.log("Test Case2: ", containsDuplicate(nums2));
-console.log("Test Case3: ", containsDuplicate(nums3));
+// console.log("Test Case1: ", containsDuplicate(nums1));
+// console.log("Test Case2: ", containsDuplicate(nums2));
+// console.log("Test Case3: ", containsDuplicate(nums3));
 
 
 
