@@ -1,23 +1,34 @@
 /** Contains Duplicate */
 
-// let nums1 = [1,2,3,1];
-// let nums2 = [1,2,3,4];
-// let nums3 = [1,1,1,3,3,4,3,2,4,2];
+let nums1 = [1,2,3,1];
+let nums2 = [1,2,3,4];
+let nums3 = [1,1,1,3,3,4,3,2,4,2];
 
 var containsDuplicate = function(nums) {
-  for (let i = 0; i < nums.length - 1; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      if (nums[i] === nums[j]) {
-        return true
-      }
+  // for (let i = 0; i < nums.length - 1; i++) {
+  //   for (let j = i + 1; j < nums.length; j++) {
+  //     if (nums[i] === nums[j]) {
+  //       return true
+  //     }
+  //   }
+  // }
+  // return false
+  
+  let numsObj = {};
+  for (let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    if (!numsObj[num]) {
+      numsObj[num] = true;
+    } else if (numsObj[num]) {
+      return true;
     }
   }
-  return false
+  return false;
 };
 
-// console.log("Test Case1: ", containsDuplicate(nums1));
-// console.log("Test Case2: ", containsDuplicate(nums2));
-// console.log("Test Case3: ", containsDuplicate(nums3));
+console.log("Test Case1: ", containsDuplicate(nums1));
+console.log("Test Case2: ", containsDuplicate(nums2));
+console.log("Test Case3: ", containsDuplicate(nums3));
 
 
 
