@@ -88,20 +88,32 @@ var arrayOfProducts = function (array) {
 /** Monotonic Array */
 var isMonotonic = function (array) {
   if (array.length <= 2) return true;
-  if (array[0] < array[1]) {
-    for (let i = 1; i < array.length; i++) {
-      if (array[i] > array[i + 1]) {
-        return false;
-      };
-    };
-  } else if (array[0] > array[1]) {
-    for (let i = 1; i < array.length; i++) {
-      if (array[i] < array[i + 1]) {
-        return false;
-      };
-    };
-  };
-  return true;
+  // if (array[0] < array[1]) {
+  //   for (let i = 1; i < array.length; i++) {
+  //     if (array[i] > array[i + 1]) {
+  //       return false;
+  //     };
+  //   };
+  // } else if (array[0] > array[1]) {
+  //   for (let i = 1; i < array.length; i++) {
+  //     if (array[i] < array[i + 1]) {
+  //       return false;
+  //     };
+  //   };
+  // } else {
+  //   for (let i = 1; i < array.length; i++) {
+  //     while () {};
+  //   }
+  // };
+  // return true;
+
+  let isIncreasing = true;
+  let isDecreasing = true;
+  for (let i = 1; i < array.length; i++) {
+    if (array[i - 1] < array[i]) isDecreasing = false;
+    if (array[i - 1] > array[i]) isIncreasing = false;
+  }
+  return isIncreasing || isDecreasing;
 };
 
 let array1 = [-1, -5, -10, -1100, -1100, -1101, -1102, -9001];
