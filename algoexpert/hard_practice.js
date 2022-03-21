@@ -1,8 +1,8 @@
-let array1 = [45, 61, 71, 72, 73, 0, 1, 21, 33, 37], target1 = 33;
-let array2 = [5, 23, 111, 1], target2 = 111;
-let array3 = [111, 1, 5, 23], target3 = 5;
-let array4 = [71, 72, 73, 0, 1, 21, 33, 37, 45, 61], target4 = 73;
-let array5 = [33, 37, 45, 61, 71, 72, 73, 355, 0, 1, 21], target5 = 355;
+// let array1 = [45, 61, 71, 72, 73, 0, 1, 21, 33, 37], target1 = 33;
+// let array2 = [5, 23, 111, 1], target2 = 111;
+// let array3 = [111, 1, 5, 23], target3 = 5;
+// let array4 = [71, 72, 73, 0, 1, 21, 33, 37, 45, 61], target4 = 73;
+// let array5 = [33, 37, 45, 61, 71, 72, 73, 355, 0, 1, 21], target5 = 355;
 
 // var shiftedBinarySearch = function (array, target) {
 //   return shiftedBinarySearchHelper(array, target, 0, array.length - 1);
@@ -58,8 +58,43 @@ const shiftedBinarySearch = (array, target) => {
     return output;
 }
 
-console.log("Test Case1:", shiftedBinarySearch(array1, target1));
-console.log("Test Case2:", shiftedBinarySearch(array2, target2));
-console.log("Test Case3:", shiftedBinarySearch(array3, target3));
-console.log("Test Case4:", shiftedBinarySearch(array4, target4));
-console.log("Test Case5:", shiftedBinarySearch(array5, target5));
+// console.log("Test Case1:", shiftedBinarySearch(array1, target1));
+// console.log("Test Case2:", shiftedBinarySearch(array2, target2));
+// console.log("Test Case3:", shiftedBinarySearch(array3, target3));
+// console.log("Test Case4:", shiftedBinarySearch(array4, target4));
+// console.log("Test Case5:", shiftedBinarySearch(array5, target5));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function firstDuplicateValue(array) {
+    // Write your code here.
+    if (array.length === 1) return -1;
+    if (array.length === 2 && array[0] !== array[1]) return -1;
+    let arrayObj = {};
+    for (let i = 0; i < array.length; i++) {
+        let num = array[i];
+        if (!arrayObj[num]) {
+            arrayObj[num] = true;
+        } else if (arrayObj[num]) {
+            return num;
+        };
+    };
+    return -1;
+}
