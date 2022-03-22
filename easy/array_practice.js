@@ -1115,3 +1115,39 @@ The island doesn't have "lakes", meaning the water inside isn't connected to the
  * 
  * 
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Peak Index in a Mountain Array */
+var peakIndexInMountainArray = function (arr) {
+  let i = 1;
+  while (i < arr.length) {
+    if (arr[i - 1] < arr[i] && arr[i] > arr[i + 1]) return i
+    i++
+  }
+};
+
+let arr1 = [0,1,0];
+let arr2 = [0,2,1,0];
+let arr3 = [0,10,5,2];
+let arr4 = [0,3,7,10,5,2];
+
+console.log("Test Case1:", peakIndexInMountainArray(arr1));
+console.log("Test Case2:", peakIndexInMountainArray(arr2));
+console.log("Test Case3:", peakIndexInMountainArray(arr3));
+console.log("Test Case4:", peakIndexInMountainArray(arr4));
