@@ -1142,12 +1142,47 @@ var peakIndexInMountainArray = function (arr) {
   }
 };
 
-let arr1 = [0,1,0];
-let arr2 = [0,2,1,0];
-let arr3 = [0,10,5,2];
-let arr4 = [0,3,7,10,5,2];
+// let arr1 = [0,1,0];
+// let arr2 = [0,2,1,0];
+// let arr3 = [0,10,5,2];
+// let arr4 = [0,3,7,10,5,2];
 
-console.log("Test Case1:", peakIndexInMountainArray(arr1));
-console.log("Test Case2:", peakIndexInMountainArray(arr2));
-console.log("Test Case3:", peakIndexInMountainArray(arr3));
-console.log("Test Case4:", peakIndexInMountainArray(arr4));
+// console.log("Test Case1:", peakIndexInMountainArray(arr1));
+// console.log("Test Case2:", peakIndexInMountainArray(arr2));
+// console.log("Test Case3:", peakIndexInMountainArray(arr3));
+// console.log("Test Case4:", peakIndexInMountainArray(arr4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Convert 1D Array to 2D Array */
+var construct2DArray = function (original, m, n) {
+  let result = new Array(m).fill([]);
+  if (original.length > (m * n)) return [];
+  for (let j = 0; j < original.length; j++) {
+    let ele = original[j];
+    result[(j % m)][(j % n)] = ele;
+  };
+  return result;
+};
+
+let original1 = [1,2,3,4], m1 = 2, n1 = 2;
+let original2 = [1,2,3], m2 = 1, n2 = 3;
+let original3 = [1,2], m3 = 1, n3 = 1;
+
+console.log("Test Case1:", construct2DArray(original1, m1, n1));
+console.log("Test Case2:", construct2DArray(original2, m2, n2));
+console.log("Test Case3:", construct2DArray(original3, m3, n3));
