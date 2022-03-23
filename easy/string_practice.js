@@ -421,10 +421,10 @@ var commonChars = function (words) {
 
 
 /** Robot Return to Origin */
-let moves1 = "UD";
-let moves2 = "LL";
-let moves3 = "RRDD";
-let moves4 = "LDRRLRUULR";
+// let moves1 = "UD";
+// let moves2 = "LL";
+// let moves3 = "RRDD";
+// let moves4 = "LDRRLRUULR";
 
 var judgeCircle = function (moves) {
   let positionX = 0;
@@ -449,10 +449,10 @@ var judgeCircle = function (moves) {
   return positionX === 0 && positionY === 0
 }
 
-console.log("Test Case1:", judgeCircle(moves1))
-console.log("Test Case2:", judgeCircle(moves2))
-console.log("Test Case3:", judgeCircle(moves3))
-console.log("Test Case4:", judgeCircle(moves4))
+// console.log("Test Case1:", judgeCircle(moves1))
+// console.log("Test Case2:", judgeCircle(moves2))
+// console.log("Test Case3:", judgeCircle(moves3))
+// console.log("Test Case4:", judgeCircle(moves4))
 
 
 
@@ -683,3 +683,58 @@ var sortSentence = function(s) {
 
 // console.log("Test Case1: ", sortSentence(s1));
 // console.log("Test Case2: ", sortSentence(s2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Backspace String Compare */
+var backspaceCompare = function (s, t) {
+  let sBack = backSpaceHelper(s);
+  let tBack = backSpaceHelper(t);
+  console.log("The strings:", "S:", sBack, "T:", tBack)
+  return sBack === tBack;
+};
+
+var backSpaceHelper = function (string) {
+  /** this was my first attempt: */
+  // let result = "";
+  // for (let i = 0; i < string.length - 1; i++) {
+  //   let currChar = string[i];
+  //   let nextChar = string[i + 1];
+  //   if (currChar !== "#" && nextChar !== "#") result += currChar;
+  // }
+  // let lastChar = string[string.length - 1];
+  // if (lastChar !== "#") result += lastChar;
+  // return result;
+
+  let result = [];
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === "#") {
+      result.pop();
+    } else {
+      result.push(string[i]);
+    };
+  };
+  return result.join("");
+};
+
+// let s1 = "ab#c", t1 = "ad#c";
+// let s2 = "ab##", t2 = "c#d#";
+// let s3 = "a#c", t3 = "b";
+
+// console.log("Test Case1:", backspaceCompare(s1, t1));
+// console.log("Test Case2:", backspaceCompare(s2, t2));
+// console.log("Test Case3:", backspaceCompare(s3, t3));
