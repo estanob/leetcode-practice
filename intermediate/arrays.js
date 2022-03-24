@@ -32,20 +32,45 @@
 // }
 
 var findDuplicates = function (nums) {
+  // let result = [];
+  // let numsHash = {};
+  // for (let i = 0; i < nums.length; i++) {
+  //   // if (!numsHash[nums[i]]) numsHash[nums[i]] = 1
+  //   // if (numsHash[nums[i]]) numsHash[nums[i]]++
+  //   if (numsHash[nums[i]]) {
+  //     numsHash[nums[i]]++;
+  //   } else {
+  //     numsHash[nums[i]] = 1;
+  //   };
+  // };
+  // for (let numKey in numsHash) {
+  //   if (numsHash[numKey] === 2) {
+  //     result.push(parseInt(numKey));
+  //   };
+  // };
+  // return result;
+
+  /** Optimization: */
   let result = [];
-  let numsHash = {};
-  for (let i = 0; i < nums.length; i++) {
-    // if (!numsHash[nums[i]]) numsHash[nums[i]] = 1
-    // if (numsHash[nums[i]]) numsHash[nums[i]]++
-    if (numsHash[nums[i]]) {
-      numsHash[nums[i]]++;
-    } else {
-      numsHash[nums[i]] = 1;
-    };
+  let allNums = duplicateHash(nums);
+  for (let count in allNums) {
+    if (allNums[count] > 1) result.push(parseInt(count));
   };
-  for (let numKey in numsHash) {
-    if (numsHash[numKey] === 2) {
-      result.push(parseInt(numKey));
+  return result;
+};
+
+var duplicateHash = function (nums) {
+  /**
+   * the optimized solution that uses this helper function
+   * has both a time and space complexity of O(N);
+   */
+  let result = {};
+  for (let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    if (!result[num]) {
+      result[num] = 1;
+    } else {
+      result[num]++;
     };
   };
   return result;

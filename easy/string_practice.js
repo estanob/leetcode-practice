@@ -332,8 +332,8 @@ var toLowerCase = function (s) {
 
 /** Unique Morse Code Words */
 const morseLetters = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
-// let words1 = ["gin","zen","gig","msg"];
-// let words2 = ["a"];
+let words1 = ["gin","zen","gig","msg"];
+let words2 = ["a"];
 
 var uniqueMorseRepresentations = function (words) {
   if (words.length === 1) return 1
@@ -354,8 +354,8 @@ var convertToMorse = function (word) {
   return morseWord;
 }
 
-// console.log("Test Case1:", uniqueMorseRepresentations(words1));
-// console.log("Test Case2:", uniqueMorseRepresentations(words2));
+console.log("Test Case1:", uniqueMorseRepresentations(words1));
+console.log("Test Case2:", uniqueMorseRepresentations(words2));
 
 
 
