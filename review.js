@@ -2,8 +2,8 @@
 var createPyramid = function (nums) {
   let pyramidArr = [nums];
   while (pyramidArr.length < nums.length) {
-    let currentLayer = pyramidArr[pyramidArr.length - 1];
-    pyramidArr.push(createLayer(currentLayer))
+    let currentLayer = pyramidArr[0];
+    pyramidArr.unshift(createLayer(currentLayer))
   }
   return pyramidArr;
 }
