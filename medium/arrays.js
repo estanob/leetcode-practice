@@ -56,10 +56,45 @@ var rotatedSearch = function (nums, target) {
   return -1; // <-- if none of the above conditions are met, this means that the target is not found in the given array, so return -1
 };
 
-let nums1 = [4,5,6,7,0,1,2], target1 = 0;
-let nums2 = [4,5,6,7,0,1,2], target2 = 3;
-let nums3 = [1], target3 = 0;
+// let nums1 = [4,5,6,7,0,1,2], target1 = 0;
+// let nums2 = [4,5,6,7,0,1,2], target2 = 3;
+// let nums3 = [1], target3 = 0;
 
-console.log("Test Case1:", rotatedSearch(nums1, target1));
-console.log("Test Case2:", rotatedSearch(nums2, target2));
-console.log("Test Case3:", rotatedSearch(nums3, target3));
+// console.log("Test Case1:", rotatedSearch(nums1, target1));
+// console.log("Test Case2:", rotatedSearch(nums2, target2));
+// console.log("Test Case3:", rotatedSearch(nums3, target3));
+
+
+
+
+/** Search in Rotated Array II */
+var rotatedSearchII = function (nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    let halfway = Math.floor((left + right) / 2);
+    console.log("left =", left, "right =", right)
+    if (nums[halfway] === target) return true;
+    if (nums[left] <= nums[halfway]) {
+      if (nums[left] <= target && target <= nums[halfway]) {
+        right = halfway - 1;
+      } else {
+        left = halfway + 1;
+      };
+    } else {
+      if (nums[halfway] <= target && target <= nums[right]) {
+        left = halfway + 1;
+      } else {
+        right = halfway - 1;
+      };
+    };
+  };
+  return false;
+};
+
+let nums1 = [2,5,6,0,0,1,2], target1 = 0; // true
+let nums2 = [2,5,6,0,0,1,2], target2 = 3; // false
+
+console.log("Test Case1:", rotatedSearchII(nums1, target1));
+console.log("Test Case2:", rotatedSearchII(nums2, target2));
+console.log("Test Case3:", rotatedSearchII([1,0,1,1,1], 0));
