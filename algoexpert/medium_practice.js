@@ -169,12 +169,124 @@ var isPalindrome = function (string) {
 };
 
 
-let string1 = "abaxyzzyxf";
-let string2 = "it's highnoon";
-let string3 = "abcdefgfedcbazzzzzzzzzzzzzzzzzzzz";
-let string4 = "zzzzzzz2345abbbba5432zzbbababa";
+// let string1 = "abaxyzzyxf";
+// let string2 = "it's highnoon";
+// let string3 = "abcdefgfedcbazzzzzzzzzzzzzzzzzzzz";
+// let string4 = "zzzzzzz2345abbbba5432zzbbababa";
 
-console.log("Test Case1:", longestPalindromicSubstring(string1));
-console.log("Test Case2:", longestPalindromicSubstring(string2));
-console.log("Test Case3:", longestPalindromicSubstring(string3));
-console.log("Test Case4:", longestPalindromicSubstring(string4));
+// console.log("Test Case1:", longestPalindromicSubstring(string1));
+// console.log("Test Case2:", longestPalindromicSubstring(string2));
+// console.log("Test Case3:", longestPalindromicSubstring(string3));
+// console.log("Test Case4:", longestPalindromicSubstring(string4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Smallest Difference */
+var smallestDifference = function (arrayOne, arrayTwo) {
+  let sortedOne = arrayOne.sort((a, b) => b - a);
+  let sortedTwo = arrayTwo.sort((a, b) => b - a);
+};
+
+// let arrayOne1 = [-1, 5, 10, 20, 28, 3], arrayTwo1 = [26, 134, 135, 15, 17];
+// let arrayOne2 = [-1, 5, 10, 20, 3], arrayTwo2 = [26, 134, 135, 15, 17];
+// let arrayOne3 = [10, 0, 20, 25], arrayTwo3 = [1005, 1006, 1014, 1032, 1031];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Longest Peak */
+var longestPeak = function (array) {
+  if (array.length === 1) return 1;
+  if (array.length === 3 && array[1] > array[0] && array[1] > array[2]) return 3;
+  if (array.length === 0) return 0;
+  // let maxEle = array[1];
+  // let peakIdx;
+  // for (let i = 1; i < array.length - 1; i++) {
+  //   let currentEle = array[i];
+  //   let previousEle = array[i - 1];
+  //   let nextEle = array[i + 1];
+  //   if (currentEle > previousEle && currentEle > nextEle && currentEle > maxEle) {
+  //     maxEle = currentEle;
+  //     peakIdx = i;
+  //   }
+  //   // console.log("Iteration#", i, "Max Element =", maxEle, "Peak Index =", peakIdx)
+  // }
+  // return peakIdx ? peakIdx : -1;
+  let maxLength = 0;
+  for (let i = 1; i < array.length - 1; i ++) {
+    let currEle = array[i];
+    let prevEle = array[i - 1];
+    let nextEle = array[i + 1];
+    if (isPeak(currEle, prevEle, nextEle) && peakLength(currEle, i, array) > maxLength) {
+      maxLength = peakLength(currEle, i, array);
+    };
+  };
+  return maxLength;
+};
+
+var isPeak = function (current, previous, next) {
+  return current > previous && current > next;
+};
+
+var peakLength = function (current, idx, array) {
+  // console.log("Index:", idx)
+  let leftEnd = idx - 1;
+  let rightEnd = idx + 1;
+  let nextLeft = leftEnd - 1;
+  let nextRight = rightEnd + 1;
+  // console.log("Left End", leftEnd, "Right End", rightEnd, "Next Left:", nextLeft, "NextRight:", nextRight)
+  while (array[nextLeft] < array[leftEnd]) {
+    leftEnd--;
+    nextLeft--;
+  };
+  while (array[nextRight] < array[rightEnd]) {
+    rightEnd++;
+    nextRight++;
+  };
+  return rightEnd - leftEnd + 1;
+}
+
+let array1 = [1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3];
+let array2 = [];
+let array3 = [1, 3, 2];
+let array4 = [1, 2, 3, 4, 5, 1];
+let array5 = [1, 2, 3, 4, 5, 6, 10, 100, 1000];
+let array6 = [1, 2, 3, 2];
+
+console.log("Test Case1:", longestPeak(array1));
+console.log("Test Case2:", longestPeak(array2));
+console.log("Test Case3:", longestPeak(array3));
+console.log("Test Case4:", longestPeak(array4));
+console.log("Test Case5:", longestPeak(array5));
+console.log("Test Case6:", longestPeak(array6));
