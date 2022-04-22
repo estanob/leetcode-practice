@@ -1179,10 +1179,57 @@ var construct2DArray = function (original, m, n) {
   return result;
 };
 
-let original1 = [1,2,3,4], m1 = 2, n1 = 2;
-let original2 = [1,2,3], m2 = 1, n2 = 3;
-let original3 = [1,2], m3 = 1, n3 = 1;
+// let original1 = [1,2,3,4], m1 = 2, n1 = 2;
+// let original2 = [1,2,3], m2 = 1, n2 = 3;
+// let original3 = [1,2], m3 = 1, n3 = 1;
 
-console.log("Test Case1:", construct2DArray(original1, m1, n1));
-console.log("Test Case2:", construct2DArray(original2, m2, n2));
-console.log("Test Case3:", construct2DArray(original3, m3, n3));
+// console.log("Test Case1:", construct2DArray(original1, m1, n1));
+// console.log("Test Case2:", construct2DArray(original2, m2, n2));
+// console.log("Test Case3:", construct2DArray(original3, m3, n3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Best Time to Buy and Sell Stock
+ */
+ let prices1 = [7,1,5,3,6,4];
+ let prices2 = [7,6,4,3,1];
+ 
+ var maxProfit = function (prices) {
+   /**
+    let bestBuy = 0;
+    let cheapestStock = prices[0];
+    for (let i = 1; i < prices.length; i++) {
+      let stock = prices[i]
+      if (cheapestStock > stock) cheapestStock = stock
+      if (stock - cheapestStock > bestBuy) bestBuy = stock - cheapestStock
+    }
+    return bestBuy;
+    */
+
+    let highestProfit = 0;
+    let lowestStock = prices[0];
+    for (let i in prices) {
+      let price = prices[i];
+      lowestStock = Math.min(lowestStock, price);
+      highestProfit = Math.max((price - lowestStock), highestProfit);
+    };
+    return highestProfit;
+ };
+ 
+ console.log("Test Case1:", maxProfit(prices1));
+ console.log("Test Case2:", maxProfit(prices2));
