@@ -92,9 +92,87 @@ var rotatedSearchII = function (nums, target) {
   return false;
 };
 
-let nums1 = [2,5,6,0,0,1,2], target1 = 0; // true
-let nums2 = [2,5,6,0,0,1,2], target2 = 3; // false
+// let nums1 = [2,5,6,0,0,1,2], target1 = 0; // true
+// let nums2 = [2,5,6,0,0,1,2], target2 = 3; // false
 
-console.log("Test Case1:", rotatedSearchII(nums1, target1));
-console.log("Test Case2:", rotatedSearchII(nums2, target2));
-console.log("Test Case3:", rotatedSearchII([1,0,1,1,1], 0));
+// console.log("Test Case1:", rotatedSearchII(nums1, target1));
+// console.log("Test Case2:", rotatedSearchII(nums2, target2));
+// console.log("Test Case3:", rotatedSearchII([1,0,1,1,1], 0));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Reduce Array Size to the Half */
+var minSetSize = function (arr) {
+  let halfSize = arr.length / 2;
+  /* if (halfSize === 1) return 1;
+  let reductionSize = 0;
+  let reductionCounter = 0;
+  let countValues = Object.values(getNumsCount(arr));
+  countValues.sort((a, b) => b - a);
+  console.log(`Count Values: ${countValues}`);
+  for (let i = 0; i < countValues.length; i++) {
+    let numVal = countValues[i];
+    console.log(`Reduction Size: ${reductionSize}, Half Size: ${halfSize}`);
+    while (reductionSize <= halfSize) {
+      reductionSize += numVal;
+      reductionCounter++;
+    };
+  };
+  return reductionCounter; */
+  // console.log(`Half Size: ${halfSize}`);
+  const numsCount = Object.values(getNumsCount(arr)).sort((a, b) => b - a);
+  // console.log(`Nums Count: ${numsCount}`);
+  let setSize = 0;
+  if (numsCount[0] >= halfSize) return 1;
+  for (let i = 0; i < numsCount.length; i++) {
+    // console.log(`i = ${i}`);
+    let numCount = numsCount[i];
+    if (halfSize > 0) {
+      // console.log(`Half Count: ${halfCount}, Set Size: ${setSize}`);
+      setSize++;
+      halfSize -= numCount;
+    } else {
+      return setSize;
+    }
+  }
+  // console.log(`Half Count: ${halfCount}`);
+  // return setSize;
+};
+
+var getNumsCount = function (arr) {
+  let eleCounts = {};
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    if (!eleCounts[num]) {
+      eleCounts[num] = 1;
+    } else {
+      eleCounts[num]++;
+    };
+  };
+  return eleCounts;
+};
+
+// let arr1 = [3,3,3,3,5,5,5,2,2,7]; // -> 2
+// let arr2 = [7,7,7,7,7,7]; // -> 1
+
+// console.log("Test Case1: ", minSetSize(arr1));
+// console.log("Test Case2: ", minSetSize(arr2));
+// console.log("Test Case3: ", minSetSize([9,77,63,22,92,9,14,54,8,38,18,19,38,68,58,19])); // -> 5
+// console.log("Test Case4: ", minSetSize([1000,1000,3,7]));
