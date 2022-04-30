@@ -45,12 +45,73 @@ var rob = function (nums) {
 //   return totalSteal;
 // }
 
-let nums1 = [1,2,3,1];
-let nums2 = [2,7,9,3,1];
-let nums3 = [5,1,2,9]; // -> 14
-let nums4 = [5,1,2,3,9]; // -> 16
+// let nums1 = [1,2,3,1];
+// let nums2 = [2,7,9,3,1];
+// let nums3 = [5,1,2,9]; // -> 14
+// let nums4 = [5,1,2,3,9]; // -> 16
 
 // console.log("Test Case1:", rob(nums1));
 // console.log("Test Case2:", rob(nums2));
-console.log("Test Case3:", rob(nums3));
+// console.log("Test Case3:", rob(nums3));
 // console.log("Test Case4:", rob(nums4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Longest Palindrome */
+var longestPalindrome = function (s) {
+  if (s.length === 1) return s;
+  let longest;
+  for (let i = 0; i < s.length - 1; i++) {
+    for (let j = 0; j < s.length; j++) {
+      if (i <= j) {
+        let subStr = s.slice(i, j + 1);
+        if (longest && isPalindrome(i, j, s) && subStr.length > longest.length) {
+          longest = subStr;
+        } else if (!longest) {
+          longest = subStr;
+        };
+      };
+    };
+  };
+  return longest;
+};
+
+var isPalindrome = function (idx1, idx2, str) {
+  let startPoint = idx1;
+  let endPoint = idx2;
+  while (startPoint < endPoint) {
+    if (str[startPoint] !== str[endPoint]) {
+      return false;
+    };
+    startPoint++;
+    endPoint--;
+  };
+  return true;
+}
+
+let s1 = "babad";
+let s2 = "cbbd";
+console.log("Test Case1: ", longestPalindrome(s1));
+console.log("Test Case2: ", longestPalindrome(s2));

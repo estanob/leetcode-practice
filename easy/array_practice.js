@@ -1,8 +1,8 @@
 /** Contains Duplicate */
 
-let nums1 = [1,2,3,1];
-let nums2 = [1,2,3,4];
-let nums3 = [1,1,1,3,3,4,3,2,4,2];
+// let nums1 = [1,2,3,1];
+// let nums2 = [1,2,3,4];
+// let nums3 = [1,1,1,3,3,4,3,2,4,2];
 
 var containsDuplicate = function(nums) {
   // for (let i = 0; i < nums.length - 1; i++) {
@@ -1241,3 +1241,40 @@ var maxProfit = function (prices) {
 
 
 
+/** Maximum Subarray */
+var maxSubArray = function (arr) {
+  let maxSum = -Infinity;
+  if (arr.length === 1) return arr[0];
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (i < j) {
+        let subArraySum = arraySum(getSubArray(i, j, arr));
+        if (subArraySum > maxSum) {
+          maxSum = subArraySum;
+        };
+      };
+    };
+  };
+  return maxSum;
+};
+
+var getSubArray = function (idx1, idx2, arr) {
+  return arr.slice(idx1, (idx2 + 1));
+};
+
+var arraySum = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    sum += num;
+  };
+  return sum;
+};
+
+let nums1 = [-2,1,-3,4,-1,2,1,-5,4];
+let nums2 = [1];
+let nums3 = [5,4,-1,7,8];
+
+console.log("Test Case1:", maxSubArray(nums1));
+console.log("Test Case2:", maxSubArray(nums2));
+console.log("Test Case3:", maxSubArray(nums3));
