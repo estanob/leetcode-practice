@@ -64,22 +64,42 @@ var checkTree = function (root) {
 
 
 /** Increasing Order Search Tree */
+
 var increasingBST = function (root) {
-  let currentRoot = root;
+  let stack = createSortedValuesArr(root);
+  let newNode = null;
+  let previous = null;
+  while (stack.length) {
+  // while (stack.length > 0) {
+    let currentNode = stack.shift();
+    if (!newNode) {
+      newNode = currentNode;
+      previous = newNode;
+    } else {
+      previous.right = currentNode;
+      previous.left = null;
+      previous = currentNode;
+    }
+  }
+  return newNode;
+};
+
+var createSortedValuesArr = function (root) {
   let valuesArr = [];
+  let currentRoot = root;
   while (currentRoot.left && currentRoot.right) {
-    valuesArr.push(currentRoot.val);
-    if (currentRoot.left.val) valuesArr.push(currentRoot.left.val);
-    if (currentRoot.right.val) valuesArr.push(currentRoot.right.val);
+    valuesArr.push(currentRoot);
+    if (currentRoot.left.val) valuesArr.push(currentRoot.left);
+    if (currentRoot.right.val) valuesArr.push(currentRoot.right);
     if (!currentRoot.left.val) {
       currentRoot = currentRoot.right;
     } else {
       currentRoot = currentRoot.left;
     };
   };
-  valuesArr.sort((a, b) => a - b);
+  valuesArr.sort((a, b) => a.val - b.val);
   return valuesArr;
-};
+}
 
 const node2 = new TreeNode(2, 1, null);
 const node4 = new TreeNode(4, null, null);
@@ -88,8 +108,11 @@ const node8 = new TreeNode(8, 7, 9);
 const node6 = new TreeNode(6, null, node8);
 const tree1 = new TreeNode(5, node3, node6);
 
-const tree2 = new TreeNode(5, 1, 7);
+const node1 = new TreeNode(1, null, null);
+const node7 = new TreeNode(7, null, null);
+const tree2 = new TreeNode(5, node1, node7);
 
 console.log("Test Case1: ", increasingBST(tree1));
-console.log("Test Case2: ", increasingBST(tree2));
+// console.log("Test Case2: ", increasingBST(tree2));
+// console.log("Test Case2 array: ", createSortedValuesArr(tree2));
 // console.log("Trees:", tree1, tree2);
