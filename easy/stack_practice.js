@@ -33,11 +33,11 @@ var removeDuplicates = function (s) {
   // return noDupStr
 }
 
-let s1 = "abbaca";
-let s2 = "azxxzy";
+// let s1 = "abbaca";
+// let s2 = "azxxzy";
 
-console.log("Test Case1:", removeDuplicates(s1));
-console.log("Test Case2:", removeDuplicates(s2));
+// console.log("Test Case1:", removeDuplicates(s1));
+// console.log("Test Case2:", removeDuplicates(s2));
 
 
 
@@ -87,3 +87,9 @@ var calPoints = function(ops) {
 
 // console.log("Test Case1:", calPoints(ops1));
 // console.log("Test Case2:", calPoints(ops2));
+
+
+
+
+
+
