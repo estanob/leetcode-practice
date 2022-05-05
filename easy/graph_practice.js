@@ -50,9 +50,9 @@ var validPath = function (n, edges, source, destination) {
 
 
 /** Find the Town Judge */
-// let n1 = 2, trust1 = [[1,2]];
-// let n2 = 3, trust2 = [[1,3],[2,3]];
-// let n3 = 3, trust3 = [[1,3],[2,3],[3,1]];
+let n1 = 2, trust1 = [[1,2]];
+let n2 = 3, trust2 = [[1,3],[2,3]];
+let n3 = 3, trust3 = [[1,3],[2,3],[3,1]];
 
 var findJudge = function (n, trust) {
   /** attempted solution */
@@ -83,33 +83,61 @@ var findJudge = function (n, trust) {
   // }
 
   /** attempted solution with object */
-  const trustedObject = {};
-  for (let [i, j] of trust) {
-    // if (!trustedObject[i]) trustedObject[i] = 0;
-    // if (trustefdObject[i]) trustedObject[i] -= 1;
-    // if (!trustedObject[j]) trustedObject[j] = 0;
-    // if (trustedObject[j]) trustedObject[j] += 1;
-    if (!trustedObject[i]) trustedObject[i] = -1;
-    if (trustedObject[i]) trustedObject[i] -= 1;
-    if (!trustedObject[j]) trustedObject[j] = 1;
-    if (trustedObject[j]) trustedObject[j] += 1;
-  }
+  // const trustedObject = {};
+  // for (let [i, j] of trust) {
+  //   // if (!trustedObject[i]) trustedObject[i] = 0;
+  //   // if (trustefdObject[i]) trustedObject[i] -= 1;
+  //   // if (!trustedObject[j]) trustedObject[j] = 0;
+  //   // if (trustedObject[j]) trustedObject[j] += 1;
+  //   if (!trustedObject[i]) trustedObject[i] = -1;
+  //   if (trustedObject[i]) trustedObject[i] -= 1;
+  //   if (!trustedObject[j]) trustedObject[j] = 1;
+  //   if (trustedObject[j]) trustedObject[j] += 1;
+  // }
 
-  console.log("Trusted Object:", trustedObject)
+  // console.log("Trusted Object:", trustedObject)
   
-  let k = 1;
-  while (k <= n) {
-    for (let person in trustedObject) {
-      k++
-      if (n === trustedObject[person]) return person
-      // if (n === trustedObject[person]) return trustedObject[person]
+  // let k = 1;
+  // while (k <= n) {
+  //   for (let person in trustedObject) {
+  //     k++
+  //     if (n === trustedObject[person]) return person
+  //     // if (n === trustedObject[person]) return trustedObject[person]
+  //   }
+  // }
+  // return -1;
+
+  // if (trust.length === 1) return trust[0][1]
+  // trust.sort((a, b) => a[1] - b[1])
+  // let startPoint = 0;
+  // let endPoint = trust.length - 1;
+  // if (trust[startPoint][1] === trust[endPoint][1]) return trust[startPoint][1]
+  // return -1;
+
+  if (trust.length === 1) return trust[0][1];
+  if (n - trust.length === 1) return -1;
+  let citizens = [];
+  let trusted = [];
+  trust.forEach(relationship => {
+    citizens.push(relationship[0])
+  })
+  trust.forEach(relationship => {
+    trusted.push(relationship[1])
+  })
+  console.log("Citizens", citizens);
+  console.log("Trusted", trusted);
+  for (let i = 0; i < trusted.length; i++) {
+    if (!citizens.includes(i)) {
+      return i
     }
   }
-  return -1;
+  return -1
 };
 
-// console.log("Test Case1:", findJudge(n1, trust1));
-// console.log("Test Case2:", findJudge(n2, trust2));
-// console.log("Test Case3:", findJudge(n3, trust3));
-// console.log("Leetcode Test Case:", findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]]));
+console.log("Test Case1:", findJudge(n1, trust1));
+console.log("Test Case2:", findJudge(n2, trust2));
+console.log("Test Case3:", findJudge(n3, trust3));
+console.log("Leetcode Test Case1:", findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]])); //3
+console.log("Leetcode Test Case2:", findJudge(3, [[1,2],[2,3]])); // -1
+
 
