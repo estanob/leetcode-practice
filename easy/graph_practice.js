@@ -114,24 +114,74 @@ var findJudge = function (n, trust) {
   // if (trust[startPoint][1] === trust[endPoint][1]) return trust[startPoint][1]
   // return -1;
 
-  if (trust.length === 1) return trust[0][1];
-  if (n - trust.length === 1) return -1;
-  let citizens = [];
-  let trusted = [];
-  trust.forEach(relationship => {
-    citizens.push(relationship[0])
-  })
-  trust.forEach(relationship => {
-    trusted.push(relationship[1])
-  })
-  console.log("Citizens", citizens);
-  console.log("Trusted", trusted);
-  for (let i = 0; i < trusted.length; i++) {
-    if (!citizens.includes(i)) {
-      return i
+  // if (trust.length === 1) return trust[0][1];
+  // if (n - trust.length === 1) return -1;
+  // let citizens = [];
+  // let trusted = [];
+  // trust.forEach(relationship => {
+  //   citizens.push(relationship[0])
+  // })
+  // trust.forEach(relationship => {
+  //   trusted.push(relationship[1])
+  // })
+  // console.log("Citizens", citizens);
+  // console.log("Trusted", trusted);
+  // for (let i = 0; i < trusted.length; i++) {
+  //   if (!citizens.includes(i)) {
+  //     return i
+  //   }
+  // } {
+  // return -1
+
+  // if (trust.length === 1) return trust[0][1]
+  // if (trust.length < 1) return -1
+  // const trustObject = {}
+  // const trustedObject = {}
+  // for (let i = 0; i < trust.length; i++) {
+  //   let relationship = trust[i];
+  //   if (!trustObject[relationship[0]]) {
+  //     trustObject[relationship[0]] = 1
+  //   } else {
+  //     trustObject[relationship[0]]++
+  //   }
+  //   if (!trustedObject[relationship[1]]) {
+  //     trustedObject[relationship[1]] = 1
+  //   } else {
+  //     trustedObject[relationship[1]]++
+  //   }
+  // }
+  // // console.log("Trust Object", trustObject, "Trusted Object", trustedObject);
+  // for (let j = 1; j <= n; j++) {
+  //   // console.log("Trusted Score:", trustedObject[j]);
+  //   if (!trustObject[j] && trustedObject[j] === n - 1) return j
+  // }
+  // return -1;
+
+
+
+
+  if (trust.length === 1) return trust[0][1]
+  if (n === 1) return 1
+  if (trust.length < 1) return -1
+  const trustObject = {}
+  const trustedObject = {}
+  for (let i = 0; i < trust.length; i++) {
+    let relationship = trust[i];
+    if (!trustObject[relationship[0]]) {
+      trustObject[relationship[0]] = 1
+    } else {
+      trustObject[relationship[0]]++
+    }
+    if (!trustedObject[relationship[1]]) {
+      trustedObject[relationship[1]] = 1
+    } else {
+      trustedObject[relationship[1]]++
     }
   }
-  return -1
+  for (let j = 1; j <= n; j++) {
+    if (!trustObject[j] && trustedObject[j] === n - 1) return j
+  }
+  return -1;
 };
 
 console.log("Test Case1:", findJudge(n1, trust1));
