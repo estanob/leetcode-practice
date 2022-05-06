@@ -184,10 +184,70 @@ var findJudge = function (n, trust) {
   return -1;
 };
 
-console.log("Test Case1:", findJudge(n1, trust1));
-console.log("Test Case2:", findJudge(n2, trust2));
-console.log("Test Case3:", findJudge(n3, trust3));
-console.log("Leetcode Test Case1:", findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]])); //3
-console.log("Leetcode Test Case2:", findJudge(3, [[1,2],[2,3]])); // -1
+// console.log("Test Case1:", findJudge(n1, trust1));
+// console.log("Test Case2:", findJudge(n2, trust2));
+// console.log("Test Case3:", findJudge(n3, trust3));
+// console.log("Leetcode Test Case1:", findJudge(4, [[1,3],[1,4],[2,3],[2,4],[4,3]])); //3
+// console.log("Leetcode Test Case2:", findJudge(3, [[1,2],[2,3]])); // -1
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Find Center of Star Graph */
+function findCenter(edges) {
+  const edge1 = {}
+  const edge2 = {}
+  for (let i = 0; i < edges.length; i++) {
+    let edge = edges[i]
+    if (!edge1[edge[0]]) {
+      edge1[edge[0]] = 1
+    } else {
+      edge1[edge[0]]++
+    }
+    if (!edge2[edge[1]]) {
+      edge2[edge[1]] = 1
+    } else {
+      edge2[edge[1]]++
+    }
+  }
+  for (let edgeSide in edge1) {
+    if (edge2[edgeSide]) return edgeSide
+  }
+}
+
+let edges1 = [[1,2],[2,3],[4,2]];
+let edges2 = [[1,2],[5,1],[1,3],[1,4]];
+
+console.log("Test Case1:", findCenter(edges1));
+console.log("Test Case2:", findCenter(edges2));
