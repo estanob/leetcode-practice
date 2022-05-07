@@ -246,8 +246,60 @@ function findCenter(edges) {
   }
 }
 
-let edges1 = [[1,2],[2,3],[4,2]];
-let edges2 = [[1,2],[5,1],[1,3],[1,4]];
+// let edges1 = [[1,2],[2,3],[4,2]];
+// let edges2 = [[1,2],[5,1],[1,3],[1,4]];
 
-console.log("Test Case1:", findCenter(edges1));
-console.log("Test Case2:", findCenter(edges2));
+// console.log("Test Case1:", findCenter(edges1));
+// console.log("Test Case2:", findCenter(edges2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Keys and Rooms */
+function canVisitAllRooms (rooms) {
+  let keys = [...rooms[0]]
+  while (keys.length < rooms.length) {
+    
+  }
+  
+  /*
+  for (let i = 1; i < rooms.length; i++) {
+    if (keys.includes(i)) {
+      let room = rooms[i]
+      for (let j = 0; j < room.length; j++) {
+        let key = room[j]
+        keys.push(key)
+      }
+    } else {
+      return false;
+    }
+  }
+  return true;
+  */
+}
+
+let rooms1 = [[1],[2],[3],[]];
+let rooms2 = [[1,3],[3,0,1],[2],[0]];
+
+console.log("Test Case1:", canVisitAllRooms(rooms1));
+console.log("Test Case2:", canVisitAllRooms(rooms2));
+console.log("Test Case3:", canVisitAllRooms([[2],[],[1]])); // true
