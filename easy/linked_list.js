@@ -6,12 +6,18 @@ class ListNode {
 }
 
 function middleNode (head) {
-  let currentNode = nextNode = head;
-  while (nextNode.next) {
-    currentNode = currentNode.next
-    nextNode = currentNode.next.next
+  let nodeArr = []
+  let currentNode = head
+  while (currentNode) {
+    nodeArr.push(currentNode)
+    if (currentNode.next) {
+      currentNode = currentNode.next
+    } else {
+      currentNode = null
+    }
   }
-  return currentNode;
+  // console.log("List Stack", nodeArr);
+  return nodeArr[Math.floor(nodeArr.length / 2)]
 }
 
 const node5 = new ListNode (5)
@@ -28,7 +34,7 @@ const nodeTwo = new ListNode (2, nodeThree)
 const nodeOne = new ListNode (1, nodeTwo)
 
 console.log("Test Case1:", middleNode(node1));
-console.log("Test Case1:", middleNode(nodeOne));
+console.log("Test Case2:", middleNode(nodeOne));
 // console.log("List1:", node1);
 // console.log("List2:", nodeOne);
 // console.log("Node5", nodeFive);
