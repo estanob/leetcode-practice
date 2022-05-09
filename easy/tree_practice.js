@@ -205,7 +205,7 @@ var maxDepth = function(root) {
 
 
 
-  
+
   
   
   
@@ -228,25 +228,81 @@ var maxDepth = function(root) {
   */
 };
 
-const node7 = new TreeNode(7, null, null)
-const node15 = new TreeNode(15, null, null)
-const node20 = new TreeNode(20, node15, node7)
-const node9 = new TreeNode(9, null, null)
-const tree3 = new TreeNode(3, node9, node20)
+// const node7 = new TreeNode(7, null, null)
+// const node15 = new TreeNode(15, null, null)
+// const node20 = new TreeNode(20, node15, node7)
+// const node9 = new TreeNode(9, null, null)
+// const tree3 = new TreeNode(3, node9, node20)
 
-const node2 = new TreeNode(2)
-const tree1 = new TreeNode(1, null, node2)
+// const node2 = new TreeNode(2)
+// const tree1 = new TreeNode(1, null, node2)
 
 
-const nodeFive = new TreeNode(5)
-const nodeFour = new TreeNode(4)
-const nodeThree = new TreeNode(3, null, nodeFive)
-const nodeTwo = new TreeNode(2, nodeFour, null)
-const treeOne = new TreeNode(1, nodeTwo, nodeThree)
-// console.log("Test Case:", );
-// console.log("Tree:", tree3)
-console.log(maxDepth(tree3))
-console.log(maxDepth(tree1))
-console.log(maxDepth(node7))
-console.log(maxDepth(node20))
-console.log("Tree One: ", maxDepth(treeOne));
+// const nodeFive = new TreeNode(5)
+// const nodeFour = new TreeNode(4)
+// const nodeThree = new TreeNode(3, null, nodeFive)
+// const nodeTwo = new TreeNode(2, nodeFour, null)
+// const treeOne = new TreeNode(1, nodeTwo, nodeThree)
+// // console.log("Test Case:", );
+// // console.log("Tree:", tree3)
+// console.log(maxDepth(tree3))
+// console.log(maxDepth(tree1))
+// console.log(maxDepth(node7))
+// console.log(maxDepth(node20))
+// console.log("Tree One: ", maxDepth(treeOne));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Range Sum of BST */
+function rangeSumBST (root, low, high) {
+  let sum = 0;
+  let stack = [root]
+  while (stack.length > 0) {
+    let currentNode = stack.pop()
+    if (currentNode.left) stack.unshift(currentNode.left)
+    if (currentNode.right) stack.unshift(currentNode.right)
+    // let currentNode = stack.shift()
+    // if (currentNode.left) stack.push(currentNode.left)
+    // if (currentNode.right) stack.push(currentNode.right)
+    if (currentNode.val >= low && currentNode.val <= high) sum += currentNode.val
+  }
+  return sum
+}
+
+const node7 = new TreeNode(7)
+const node3 = new TreeNode(3)
+const node18 = new TreeNode(18)
+const node15 = new TreeNode(15, null, node18)
+const node5 = new TreeNode(5, node3, node7)
+const tree10 = new TreeNode(10, node5, node15)
+console.log("Test Case1:", rangeSumBST(tree10, 7, 15));
