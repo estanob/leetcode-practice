@@ -174,36 +174,58 @@ var maxDepth = function(root) {
   //      - we finish traversing when the stack is empty
   //      - good for when we need to figure out "how far do we need to go"
   
+  /*
   if (!root) return 0;
-  if (!root.left && !root.right) return 1;
-  const stack = [root];
-  const traversed = [];
+  let stack = [root];
+  // const stack = [root];
+  // const traversed = [];
+  let depth = 0;
   while (stack.length > 0) {
-    // console.log(`Iteration #${i}`, "Stack", stack);
-    traversed.push(stack.pop());
-    let currentNode = traversed[traversed.length -1]
+    let levelStack = []
+    for (let node of stack) {
+      if (node.right) levelStack.push(node.right)
+      if (node.left) levelStack.push(node.left)
+    }
+    stack = levelStack
+    // traversed.push(stack.pop());
+    // let currentNode = traversed[traversed.length -1]
     // if ((currentNode.right || currentNode.left) && traversed.length === 1) max++
     // console.log("Current Node:", currentNode);
-    if (currentNode.left || currentNode.right) depth++
-    if (currentNode.right) stack.push(currentNode.right)
-    if (currentNode.left) stack.push(currentNode.left)
+    // if (currentNode.right) stack.push(currentNode.right)
+    // if (currentNode.left) stack.push(currentNode.left)
     // max++
     // pop out the top node from the stack
     // push in the top node's children into the stack
     // if we want to traverse left to right, we have to push in right before left
-  //   console.log("Traversed:", traversed);
-  //   if (currentNode.right.val) {
-  //     stack.push(currentNode.right)
-  //   }
-  //   if (currentNode.left.val) {
-  //     stack.push(currentNode.left)
-  //   }
-  //   stack.push(currentNode.right, currentNode.left)
-  //   traversed.push(currentNode)
-  // console.log("Stack Length = ", stack.length, "Traversed Length = ", traversed.length);
+    depth++;
   }
-  let depth = 0;
+  return depth;
+  */
+
+
+
+
   
+  
+  
+  
+
+  // DFS iterative
+  /*
+  let depth = 0
+  let queue = [root]
+  while (queue.length > 0) {
+    depth++
+    let size = queue.length
+    while (size > 0) {
+      size --
+      let currentNode = queue.shift()
+      if (currentNode.left !== null) queue.push(currentNode.left)
+      if (currentNode.right !== null) queue.push(currentNode.right)
+    }
+  }
+  return depth
+  */
 };
 
 const node7 = new TreeNode(7, null, null)
@@ -214,9 +236,17 @@ const tree3 = new TreeNode(3, node9, node20)
 
 const node2 = new TreeNode(2)
 const tree1 = new TreeNode(1, null, node2)
+
+
+const nodeFive = new TreeNode(5)
+const nodeFour = new TreeNode(4)
+const nodeThree = new TreeNode(3, null, nodeFive)
+const nodeTwo = new TreeNode(2, nodeFour, null)
+const treeOne = new TreeNode(1, nodeTwo, nodeThree)
 // console.log("Test Case:", );
 // console.log("Tree:", tree3)
 console.log(maxDepth(tree3))
 console.log(maxDepth(tree1))
 console.log(maxDepth(node7))
 console.log(maxDepth(node20))
+console.log("Tree One: ", maxDepth(treeOne));
