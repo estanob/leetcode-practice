@@ -225,7 +225,7 @@ var maxDepth = function(root) {
     }
   }
   return depth
-  */
+  */ 
 };
 
 // const node7 = new TreeNode(7, null, null)
@@ -299,10 +299,102 @@ function rangeSumBST (root, low, high) {
   return sum
 }
 
-const node7 = new TreeNode(7)
-const node3 = new TreeNode(3)
-const node18 = new TreeNode(18)
-const node15 = new TreeNode(15, null, node18)
-const node5 = new TreeNode(5, node3, node7)
-const tree10 = new TreeNode(10, node5, node15)
-console.log("Test Case1:", rangeSumBST(tree10, 7, 15));
+// const node7 = new TreeNode(7)
+// const node3 = new TreeNode(3)
+// const node18 = new TreeNode(18)
+// const node15 = new TreeNode(15, null, node18)
+// const node5 = new TreeNode(5, node3, node7)
+// const tree10 = new TreeNode(10, node5, node15)
+// console.log("Test Case1:", rangeSumBST(tree10, 7, 15));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Search in a Binary Search Tree */
+function searchBST (root, val) {
+  let stack = [root]
+  while (stack.length > 0) {
+    let currentNode = stack.pop()
+    if (currentNode.val === val) return currentNode
+    if (currentNode.left) stack.unshift(currentNode.left)
+    if (currentNode.right) stack.unshift(currentNode.right)
+  }
+  return null;
+}
+
+// const node3 = new TreeNode(3)
+// const node1 = new TreeNode(1)
+// const node7 = new TreeNode(7)
+// const node2 = new TreeNode(2, node1, node3)
+// const tree4 = new TreeNode(4, node2, node7)
+// console.log("Test Case 1:", searchBST(tree4, 2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Cousins in Binary Tree */
+function isCousins (root, x, y) {
+  let queue = [root]
+  let nodeChildren = []
+  let nodeGrandChildren1 = []
+  let nodeGrandChildren2 = []
+  while (queue.length > 0) {
+    let currentNode = queue.shift()
+    if (currentNode.left) nodeChildren.push(currentNode.left)
+    if (currentNode.right) nodeChildren.push(currentNode.right)
+    if (nodeChildren.length === 2) {
+      let firstChild = nodeChildren[0]
+      let secChild = nodeChildren[1]
+      if (firstChild.left) nodeGrandChildren1.push(firstChild.left)
+      if (firstChild.right) nodeGrandChildren1.push(firstChild.right)
+      if (secChild.left) nodeGrandChildren2.push(secChild.left)
+      if (secChild.right) nodeGrandChildren2.push(secChild.right)
+    } 
+  }
+  if ((nodeGrandChildren1.find(ele => ele.val === x) && nodeGrandChildren2.find(ele => ele.val === y)) || (nodeGrandChildren1.find(ele => ele.val === y) && nodeGrandChildren2.find(ele => ele.val === x))) return true;
+  return false;
+  // return "Grand Children1: " + nodeGrandChildren1 + "Grand Children2: ", nodeGrandChildren2
+}
+
+// const node5 = new TreeNode (5)
+// const node3 = new TreeNode (3, null, node5)
+// const nodeThree = new TreeNode(3)
+// const node4 = new TreeNode(4)
+// const node2 = new TreeNode(2, node4, null)
+// const tree1 = new TreeNode (1, node2, node3)
+// const treeOne = new TreeNode(1, node2, nodeThree)
+
+// console.log("Test Case1: ",isCousins(tree1, 5, 4));
+// console.log("Test Case2: ",isCousins(treeOne, 4, 3));
