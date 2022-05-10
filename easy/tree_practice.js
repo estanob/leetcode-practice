@@ -63,6 +63,65 @@ var checkTree = function (root) {
 
 
 
+/** Binary Tree Level Order Traversal */
+function levelOrder (root) {
+  if (!root) return []
+  let levels = []
+  let queue = [root]
+  while (queue.length > 0) {
+    let indivLevel = []
+    let size = queue.length
+    while (size > 0) {
+      size--
+      let currentNode = queue.shift()
+      indivLevel.push(currentNode.val)
+      if (currentNode.left) queue.push(currentNode.left)
+      if (currentNode.right) queue.push(currentNode.right)
+    }
+    levels.push(indivLevel)
+  }
+  return levels
+}
+
+const node7 = new TreeNode(7)
+const node15 = new TreeNode(15)
+const node20 = new TreeNode(20, node15, node7)
+const node9 = new TreeNode(9)
+const node3 = new TreeNode(3, node9, node20)
+
+console.log("Test Case1: ", levelOrder(node3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** Increasing Order Search Tree */
 
 var increasingBST = function (root) {
@@ -218,7 +277,7 @@ var maxDepth = function(root) {
     depth++
     let size = queue.length
     while (size > 0) {
-      size --
+      size--
       let currentNode = queue.shift()
       if (currentNode.left !== null) queue.push(currentNode.left)
       if (currentNode.right !== null) queue.push(currentNode.right)
@@ -226,6 +285,34 @@ var maxDepth = function(root) {
   }
   return depth
   */ 
+
+
+  
+  
+  
+  
+  
+  /** DFS recursive -- review */
+  // if (!root) return 0
+  // return Math.max(maxDepth(root.left), maxDepth(root.right) + 1)
+
+
+  
+
+
+
+  /** BFS */
+  if (!root) return 0
+  let depth = 0;
+  let queue = [root]
+  let traversed = []
+  while (queue.length > 0) {
+    let currentNode = queue.shift()
+    traversed.push(currentNode)
+    if (currentNode.left) traversed.push(currentNode.left)
+    if (currentNode.right) traversed.push(currentNode.right)
+  }
+  return depth
 };
 
 // const node7 = new TreeNode(7, null, null)
@@ -243,8 +330,8 @@ var maxDepth = function(root) {
 // const nodeThree = new TreeNode(3, null, nodeFive)
 // const nodeTwo = new TreeNode(2, nodeFour, null)
 // const treeOne = new TreeNode(1, nodeTwo, nodeThree)
-// // console.log("Test Case:", );
-// // console.log("Tree:", tree3)
+// console.log("Test Case:", );
+// console.log("Tree:", tree3)
 // console.log(maxDepth(tree3))
 // console.log(maxDepth(tree1))
 // console.log(maxDepth(node7))
