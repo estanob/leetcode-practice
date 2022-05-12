@@ -83,13 +83,56 @@ function levelOrder (root) {
   return levels
 }
 
-const node7 = new TreeNode(7)
-const node15 = new TreeNode(15)
-const node20 = new TreeNode(20, node15, node7)
-const node9 = new TreeNode(9)
-const node3 = new TreeNode(3, node9, node20)
+// const node7 = new TreeNode(7)
+// const node15 = new TreeNode(15)
+// const node20 = new TreeNode(20, node15, node7)
+// const node9 = new TreeNode(9)
+// const node3 = new TreeNode(3, node9, node20)
 
-console.log("Test Case1: ", levelOrder(node3));
+// console.log("Test Case1: ", levelOrder(node3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Level Order Bottom */
+function levelOrderBottom (root) {
+  if (!root) return []
+  let levels = []
+  let queue = [root]
+  while (queue.length > 0) {
+    let indivLevel = []
+    let size = queue.length
+    while (size > 0) {
+      size--
+      let currentNode = queue.shift()
+      indivLevel.push(currentNode.val)
+      if (currentNode.left) queue.push(currentNode.left)
+      if (currentNode.right) queue.push(currentNode.right)
+    }
+    levels.unshift(indivLevel)
+  }
+  return levels
+}
+
+// const node7 = new TreeNode(7)
+// const node15 = new TreeNode(15)
+// const node20 = new TreeNode(20, node15, node7)
+// const node9 = new TreeNode(9)
+// const node3 = new TreeNode(3, node9, node20)
+
+// console.log("Test Case1: ", levelOrderBottom(node3));
 
 
 
@@ -485,3 +528,277 @@ function isCousins (root, x, y) {
 
 // console.log("Test Case1: ",isCousins(tree1, 5, 4));
 // console.log("Test Case2: ",isCousins(treeOne, 4, 3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Average of Levels in Binary Tree */
+function averageOfLevels(root) {
+  let averages = []
+  let queue = [root]
+  while (queue.length > 0) {
+    let levelValues = []
+    let size = queue.length
+    while (size > 0) {
+      size --
+      let currentNode = queue.shift()
+      levelValues.push(currentNode.val)
+      if (currentNode.left) queue.push(currentNode.left)
+      if (currentNode.right) queue.push(currentNode.right)
+    }
+    averages.push(getAverage(levelValues))
+  }
+  return averages
+}
+
+function getAverage(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i]
+    sum += num
+  }
+  return sum / arr.length
+}
+
+// const node7 = new TreeNode(7)
+// const node15 = new TreeNode(15)
+// const node20 = new TreeNode(20, node15, node7)
+// const node9 = new TreeNode(9)
+// const node3 = new TreeNode(3, node9, node20)
+
+// console.log("Test Case1: ", averageOfLevels(node3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Kth Smallest Element in  BST */
+function kthSmallest (root, k) {
+  let nodeArr = []
+  let queue = [root];       // start the queue with the given root
+  while (queue.length) {    // while the queue is filled, do something
+    let currentNode = queue.shift()   // remove element 0 of the queue
+    nodeArr.push(currentNode.val)     // push the value to the node array
+    if (currentNode.left) queue.push(currentNode.left)  // if there's a left value, push it to the queue
+    if (currentNode.right) queue.push(currentNode.right) // if there's a right value, push it to the queue
+  }
+  return nodeArr.sort((a, b) => a - b)[k -1] // sort the node array in ascending order, then return index k - 1 because of 0 indexing
+}
+
+// const node2 = new TreeNode(2)
+// const node4 = new TreeNode(4)
+// const node1 = new TreeNode(1, node2)
+// const tree3 = new TreeNode(3, node1, node4)
+
+// console.log("Test Case1: ", kthSmallest(tree3, 1));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Second Minimum Node in a Binary Tree */
+function findSecondMinimumValue (root) {
+  if (!root) return -1
+  let nodeValues = {}
+  let queue = [root]
+  while (queue.length > 0) {
+    let currentNode = queue.shift()
+    if (currentNode.left) queue.push(currentNode.left)
+    if (currentNode.right) queue.push(currentNode.right)
+    if (!nodeValues[currentNode.val]) nodeValues[currentNode.val]
+  }
+  let nodeValsArr = Object.keys(nodeValues).sort((a, b) => a - b)
+  return nodeValsArr.length >= 2 ? nodeValsArr[1] : -1
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** NEED TO COMPLETE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Right Side View */
+// traverse only the right side of the BT
+// want to push node values into an arr to be returned 
+// strictly right side, but including root
+function rightSideView (root) {
+  if (!root) return []
+  let rightSide = [root.val]
+  if (root.left && !root.right) return [root.val, root.left.val]
+  let currentNode = root
+  while (currentNode.right) {
+    rightSide.push(currentNode.right.val)
+    currentNode = currentNode.right
+  }
+  return rightSide
+}
+
+// const node4 = new TreeNode(4)
+// const node3 = new TreeNode(3, null, node4)
+// const node5 = new TreeNode(5)
+// const node2 = new TreeNode(2, null, node5)
+// const node1 = new TreeNode(1, node2, node3)
+
+
+// const nodeTwo = new TreeNode(2)
+// const treeOne = new TreeNode(1, nodeTwo)
+// console.log("Test Case1: ", rightSideView(node1));
+// console.log("Test Case2: ", rightSideView(treeOne)); // [1, 2]
+
+
+
+
+
+
