@@ -1,3 +1,35 @@
+/** Valid Parentheses */
+function isValid(s) {
+  let sArr = s.split("")
+  while (sArr.length) {
+    let currentChar = sArr.pop()
+    
+  }
+}
+
+let s1 = "()"
+let s2 = "()[]{}"
+let s3 = "(]"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** Remove All Adjacent Duplicates in a String */
 var removeDuplicates = function (s) {
   let noDupArr = [];

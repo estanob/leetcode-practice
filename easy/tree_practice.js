@@ -715,6 +715,47 @@ function findSecondMinimumValue (root) {
 
 
 
+/** Validate Binary Searth Tree */
+function isValidBST(root) {
+  let queue = [root]
+  let parentNode = root
+  while (queue.length > 0) {
+    let currentNode = queue.shift()
+    if (currentNode === parentNode) {
+      if ((currentNode.left && currentNode.left.val > currentNode.val) || (currentNode.right && currentNode.right.val < currentNode.val)) return false
+      if (currentNode.left) queue.push(currentNode.left)
+      if (currentNode.right) queue.push(currentNode.right)
+    } else {
+      if (currentNode)
+    }
+  }
+  return true
+}
+
+const node3 = new TreeNode(3)
+const node1 = new TreeNode(1)
+const tree2 = new TreeNode(2, node1, node3)
+
+const node6 = new TreeNode(6)
+const node4 = new TreeNode(4, node3, node6)
+const tree5 = new TreeNode(5, node1, node4)
+
+console.log("Test Case1:", isValidBST(tree2));
+console.log("Test Case2:", isValidBST(tree5));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
