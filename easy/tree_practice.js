@@ -93,6 +93,99 @@ function levelOrder (root) {
 
 
 
+/**
+ * 
+ * @param {const levelOrderBFS = function(root) {
+    if (!root) return [];
+    
+    const queue = [{node: root, level: 0}];
+    const output = [];
+    
+    while (queue.length > 0) {
+        const {node, level} = queue.shift();
+        if (!output[level]) output.push([]);
+        output[level].push(node.val);
+            
+        if (node.left !== null) queue.push({node: node.left, level: level+1});
+        if (node.right !== null) queue.push({node: node.right, level: level+1});
+    }
+    
+    return output;
+};
+DFS - iterative
+Note: notice that DFS must push right first if we want to access left first
+const levelOrderDFS = function(root) {
+    if (!root) return [];
+    
+    const stack = [{node: root, level: 0}];
+    const output = [];
+    
+    while (stack.length > 0) {
+        const {node, level} = stack.pop();
+        if (!output[level]) output.push([]);
+        output[level].push(node.val);
+        
+        if (node.right !== null) stack.push({node: node.right, level: level+1});
+        if (node.left !== null) stack.push({node: node.left, level: level+1});
+    }
+    
+    return output;
+};
+DFS - recursive
+const levelOrderRecursive = function(root) {
+    const levels = [];
+      dfsHelper(root, levels, 0);
+      return levels;
+};
+
+const dfsHelper = (root, levels, levelNum) => {
+  if (!root) return;
+  
+  if (levelNum === levels.length) {
+    levels.push([root.val]);
+  } else {
+    levels[levelNum].push(root.val);
+  }
+  
+  dfsHelper(root.left, levels, levelNum + 1);
+  dfsHelper(root.right, levels, levelNum + 1);
+}} root 
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,6 +235,51 @@ function levelOrderBottom (root) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+/** Insert into a Binary Search Tree */
+function insertIntoBST(root, val) {
+  // let stack = [root];
+  // while (stack.length > 0) {
+  //   let currentNode = stack.pop()
+  //   if (currentNode.left !== null) stack.push(currentNode.left)
+  //   if (currentNode.right !== null) stack.push(currentNode.right)
+  //   if (currentNode.left === null && val < currentNode.val) {
+  //     currentNode.left = new TreeNode (val)
+  //     return root
+  //   }
+  //   if (currentNode.right === null && val < currentNode.val) {
+  //     currentNode.right = new TreeNode (val)
+  //     return root
+  //   }
+  // }
+
+  const newNode = new TreeNode(val)
+  if (!root) return newNode
+
+  if (val < root.val) root.left = insertIntoBST(root.left, val)
+  if (val > root.val) root.right = insertIntoBST(root.right, val)
+
+  return root
+}
+
+
+const node3 = new TreeNode(3)
+const node1 = new TreeNode(1)
+const node2 = new TreeNode(2, node1, node3)
+const node7 = new TreeNode(7)
+const tree4 = new TreeNode(4, node2, node7)
+
+console.log("Test Case1: ", insertIntoBST(tree4, 5));
 
 
 
@@ -717,33 +855,31 @@ function findSecondMinimumValue (root) {
 
 /** Validate Binary Searth Tree */
 function isValidBST(root) {
-  let queue = [root]
-  let parentNode = root
-  while (queue.length > 0) {
-    let currentNode = queue.shift()
-    if (currentNode === parentNode) {
-      if ((currentNode.left && currentNode.left.val > currentNode.val) || (currentNode.right && currentNode.right.val < currentNode.val)) return false
-      if (currentNode.left) queue.push(currentNode.left)
-      if (currentNode.right) queue.push(currentNode.right)
-    } else {
-      if (currentNode)
-    }
-  }
-  return true
+  // let queue = [root]
+  // let parentNode = root
+  // while (queue.length > 0) {
+  //   let currentNode = queue.shift()
+  //   if (currentNode === parentNode) {
+  //     if ((currentNode.left && currentNode.left.val > currentNode.val) || (currentNode.right && currentNode.right.val < currentNode.val)) return false
+  //     if (currentNode.left) queue.push(currentNode.left)
+  //     if (currentNode.right) queue.push(currentNode.right)
+  //   } else {
+  //     if (currentNode)
+  //   }
+  // }
+  // return true
 }
 
-const node3 = new TreeNode(3)
-const node1 = new TreeNode(1)
-const tree2 = new TreeNode(2, node1, node3)
+// const node3 = new TreeNode(3)
+// const node1 = new TreeNode(1)
+// const tree2 = new TreeNode(2, node1, node3)
 
-const node6 = new TreeNode(6)
-const node4 = new TreeNode(4, node3, node6)
-const tree5 = new TreeNode(5, node1, node4)
+// const node6 = new TreeNode(6)
+// const node4 = new TreeNode(4, node3, node6)
+// const tree5 = new TreeNode(5, node1, node4)
 
-console.log("Test Case1:", isValidBST(tree2));
-console.log("Test Case2:", isValidBST(tree5));
-
-
+// console.log("Test Case1:", isValidBST(tree2));
+// console.log("Test Case2:", isValidBST(tree5));
 
 
 
@@ -763,6 +899,41 @@ console.log("Test Case2:", isValidBST(tree5));
 
 
 
+
+
+
+
+
+
+
+
+
+/** Lowest Common Ancestor of a Binary Search Tree */
+function lowestCommonAncestor (root, p, q) {
+  let currentNode = root;
+  while (currentNode) {
+    if (p < currentNode.val && q < currentNode.val) {
+      currentNode = currentNode.left
+    } else if (p > currentNode.val && q > currentNode.val) {
+      currentNode = currentNode.right
+    }
+  }
+  return currentNode.val
+}
+
+// const node5 = new TreeNode(5)
+// const node3 = new TreeNode(3)
+// const node4 = new TreeNode(4, node3, node5)
+// const node0 = new TreeNode(0)
+// const node9 = new TreeNode(9)
+// const node7 = new TreeNode(7)
+// const node8 = new TreeNode(8, node7, node9)
+// const node2 = new TreeNode(2, node0, node4)
+// const tree6 = new TreeNode(6, node2, node8)
+
+// console.log("Test Case1: ", lowestCommonAncestor(tree6, 2, 8));
+// console.log("Test Case2: ", lowestCommonAncestor(tree6, 2, 4));
+// console.log("Test Case3: ", lowestCommonAncestor(new TreeNode(2, new TreeNode(1)), 2, 1));
 
 
 

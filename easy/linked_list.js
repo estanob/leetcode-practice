@@ -62,7 +62,7 @@ function middleNode (head) {
 
 /** Remove Nth Node from End of List */
 function removeNthFromEnd(head, n) {
-  if (!head.next && n === 1) return []
+  if (head.next === null && n === 1) return []
   let nodeArr = []
   let currentNode = head
   while (currentNode) {
