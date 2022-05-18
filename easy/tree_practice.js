@@ -8,6 +8,28 @@ class TreeNode {
   }
 }
 
+class Node {
+  constructor(val, children) {
+    this.val = val === undefined ? 0 : val;
+    this.children = children === undefined ? [] : children;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var isSameTree = function(p, q) {
   const pArr = [p.val, p.left, p.right];
   const qArr = [q.val, q.left, q.right];
@@ -36,6 +58,83 @@ var checkTree = function (root) {
 
 // console.log("Test Case1:", checkTree(tenTree));
 // console.log("Test Case2:", checkTree(fiveTree));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Univalued Binary Tree */
+function isUnivalTree(root) {
+  let stack = [root] 
+  const uniVal = root.val
+  while (stack.length) {
+    let currentNode = stack.pop()
+    if (currentNode.val !== uniVal) return false;
+    if (currentNode.left) stack.push(currentNode.left)
+    if (currentNode.right) stack.push(currentNode.right)
+  }
+  return true;
+}
+
+const tree1 = new TreeNode(1, new TreeNode(1, new TreeNode(1), new TreeNode(1)), new TreeNode(1, null, new TreeNode(1)))
+const tree2 = new TreeNode(2, new TreeNode(2, new TreeNode(5), new TreeNode(2)), new TreeNode(2))
+
+console.log("Test Case1: ", isUnivalTree(tree1));
+console.log("Test Case2: ", isUnivalTree(tree2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Subtree of Another Tree */
+function isSubtree (root, subroot) {
+  let stack = [root]
+  while (stack.length > 0) {
+    let currentNode = stack.pop()
+    if (currentNode === subroot) return true
+    if (currentNode.left) stack.push(currentNode.left)
+    if (currentNode.right) stack.push(currentNode.right)
+  }
+  return false
+}
+
+// const node4 = new TreeNode(4, new TreeNode(1), new TreeNode(2))
+// const node5 = new TreeNode(5)
+// const node3 = new TreeNode(3, node4, node5)
+
+// console.log("Test Case1:", isSubtree(node3, node4));
+
+
+
+
+
+
 
 
 
@@ -273,13 +372,13 @@ function insertIntoBST(root, val) {
 }
 
 
-const node3 = new TreeNode(3)
-const node1 = new TreeNode(1)
-const node2 = new TreeNode(2, node1, node3)
-const node7 = new TreeNode(7)
-const tree4 = new TreeNode(4, node2, node7)
+// const node3 = new TreeNode(3)
+// const node1 = new TreeNode(1)
+// const node2 = new TreeNode(2, node1, node3)
+// const node7 = new TreeNode(7)
+// const tree4 = new TreeNode(4, node2, node7)
 
-console.log("Test Case1: ", insertIntoBST(tree4, 5));
+// console.log("Test Case1: ", insertIntoBST(tree4, 5));
 
 
 
@@ -450,8 +549,8 @@ var maxDepth = function(root) {
   
   
 
-  // DFS iterative
-  /*
+  // BFS iterative
+  // /*
   let depth = 0
   let queue = [root]
   while (queue.length > 0) {
@@ -465,7 +564,7 @@ var maxDepth = function(root) {
     }
   }
   return depth
-  */ 
+  // */ 
 
 
   
@@ -475,7 +574,7 @@ var maxDepth = function(root) {
   
   /** DFS recursive -- review */
   // if (!root) return 0
-  // return Math.max(maxDepth(root.left), maxDepth(root.right) + 1)
+  // return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1 // add 1 because base case says to return 0
 
 
   
@@ -483,17 +582,17 @@ var maxDepth = function(root) {
 
 
   /** BFS */
-  if (!root) return 0
-  let depth = 0;
-  let queue = [root]
-  let traversed = []
-  while (queue.length > 0) {
-    let currentNode = queue.shift()
-    traversed.push(currentNode)
-    if (currentNode.left) traversed.push(currentNode.left)
-    if (currentNode.right) traversed.push(currentNode.right)
-  }
-  return depth
+  // if (!root) return 0
+  // let depth = 0;
+  // let queue = [root]
+  // let traversed = []
+  // while (queue.length > 0) {
+  //   let currentNode = queue.shift()
+  //   traversed.push(currentNode)
+  //   if (currentNode.left) traversed.push(currentNode.left)
+  //   if (currentNode.right) traversed.push(currentNode.right)
+  // }
+  // return depth
 };
 
 // const node7 = new TreeNode(7, null, null)
@@ -520,6 +619,63 @@ var maxDepth = function(root) {
 // console.log("Tree One: ", maxDepth(treeOne));
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Maximum Depth of N-ary Tree */
+function maxDepthNAry (root) {
+  if (!root) return 0; // base case is to return 0 because a null root has 0 level depth
+
+  // if (root.children) {
+  //   for (let i = 0; i < root.children.length; i++) {
+  //     let child = root.children[i]
+  //     return maxDepthNAry(child)
+  //   }
+  // }
+  // return Math.max(maxDepthNAry(root.children)) + 1
+
+
+  
+  /** Recursive call, but not optimized because we have to iterate through all children of the root node */
+  let max = 0     // default set the depth at 0
+  for (let child of root.children) {    // iterate through the children
+    max = Math.max(max, maxDepthNAry(child))  // recursive call 
+    // this will reassign the max depth level
+  }
+  return 1 + max  // + 1 because the base case is 0 
+}
+
+// const node10 = new Node(10)
+// const node13 = new Node(13)
+// const node9 = new Node(9 [node13])
+// const node5 = new Node(5, [node9, node10])
+// const node12 = new Node(12)
+// const node8 = new Node(8, [node12])
+// const node4 = new Node(4, [node8])
+// const node14 = new Node(14)
+// const node11 = new Node(11, [node14])
+// const node7 = new Node(7, [node11])
+// const node6 = new Node(6)
+// const node3 = new Node(3, [node6, node7])
+// const node2 = new Node(2)
+// const tree1 = new Node(1, [node2, node3, node4, node5])
+
+// console.log("Test Case: ", maxDepthNAry(tree1)); // => 5
 
 
 
@@ -868,7 +1024,45 @@ function isValidBST(root) {
   //   }
   // }
   // return true
-}
+
+
+
+  return checkBST(root)
+  function checkBST(root , min = -Infinity , max = +Infinity){
+      console.log("Root: ", root);
+      if(!root)return true;
+      if(root.val <= min ||  root.val >= max) return false
+      return checkBST(root.left , min , root.val ) && checkBST(root.right , root.val , max )
+  }
+  
+  
+  
+  
+//   let stack = [root]
+//   while (stack.length > 0) {
+//     let currentNode = stack.pop()
+//     if ((currentNode.left && currentNode.left.val >= currentNode.val) || (currentNode.right && currentNode.right.val <= currentNode.val)) return false
+//     if (currentNode.left) stack.push(currentNode.left)
+//     if (currentNode.right) stack.push(currentNode.right)
+//   }
+//   return true
+// }
+  // return helper(root, null, null);
+};
+
+// var helper = function(node, lower, upper) {
+//     if (node == null) return true;
+//     console.log("Node = ", node, "lower = ", lower, "upper = ", upper);
+//     let val = node.val;
+    
+//     if (lower != null && val <= lower) return false;
+//     if (upper != null && val >= upper) return false;
+    
+//     if (! helper(node.right, val, upper)) return false;
+//     if (! helper(node.left, lower, val)) return false;
+    
+//     return true;
+// };
 
 // const node3 = new TreeNode(3)
 // const node1 = new TreeNode(1)
@@ -880,6 +1074,7 @@ function isValidBST(root) {
 
 // console.log("Test Case1:", isValidBST(tree2));
 // console.log("Test Case2:", isValidBST(tree5));
+// console.log("Test Case3:", isValidBST(new TreeNode(2, new TreeNode(2),new TreeNode(2))));
 
 
 
