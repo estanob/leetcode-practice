@@ -79,6 +79,7 @@ var checkTree = function (root) {
 
 /** Univalued Binary Tree */
 function isUnivalTree(root) {
+  /** DFS iterative 
   let stack = [root] 
   const uniVal = root.val
   while (stack.length) {
@@ -87,15 +88,26 @@ function isUnivalTree(root) {
     if (currentNode.left) stack.push(currentNode.left)
     if (currentNode.right) stack.push(currentNode.right)
   }
-  return true;
+  return true; */
+
+  /** DFS recursive */
+  let uniValue = root.val
+  return sameThroughout(root, uniValue)
 }
 
-const tree1 = new TreeNode(1, new TreeNode(1, new TreeNode(1), new TreeNode(1)), new TreeNode(1, null, new TreeNode(1)))
-const tree2 = new TreeNode(2, new TreeNode(2, new TreeNode(5), new TreeNode(2)), new TreeNode(2))
+function sameThroughout(node, uniValue) {
+  if (!node) return true  // base case
+  let leftCheck = sameThroughout(node.left, uniValue)     // recursive call
+  let rightCheck = sameThroughout(node.right, uniValue)   // recursive call
+  return node.val === uniValue && leftCheck && rightCheck // all 3 must be true
+}
+
+const tree1 = new TreeNode(1, new TreeNode(1, new TreeNode(1), new TreeNode(1)), new TreeNode(1, null, new TreeNode(1))) // => true
+const tree2 = new TreeNode(2, new TreeNode(2, new TreeNode(5), new TreeNode(2)), new TreeNode(2)) // => false
 
 console.log("Test Case1: ", isUnivalTree(tree1));
 console.log("Test Case2: ", isUnivalTree(tree2));
-
+console.log("Test Case3: ", isUnivalTree(new TreeNode(9, new TreeNode(9, new TreeNode(9), new TreeNode(9)), new TreeNode(6)))); // [9,9,6,9,9] => false
 
 
 
