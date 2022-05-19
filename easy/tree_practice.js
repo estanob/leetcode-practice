@@ -102,12 +102,55 @@ function sameThroughout(node, uniValue) {
   return node.val === uniValue && leftCheck && rightCheck // all 3 must be true
 }
 
-const tree1 = new TreeNode(1, new TreeNode(1, new TreeNode(1), new TreeNode(1)), new TreeNode(1, null, new TreeNode(1))) // => true
-const tree2 = new TreeNode(2, new TreeNode(2, new TreeNode(5), new TreeNode(2)), new TreeNode(2)) // => false
+// const tree1 = new TreeNode(1, new TreeNode(1, new TreeNode(1), new TreeNode(1)), new TreeNode(1, null, new TreeNode(1))) // => true
+// const tree2 = new TreeNode(2, new TreeNode(2, new TreeNode(5), new TreeNode(2)), new TreeNode(2)) // => false
 
-console.log("Test Case1: ", isUnivalTree(tree1));
-console.log("Test Case2: ", isUnivalTree(tree2));
-console.log("Test Case3: ", isUnivalTree(new TreeNode(9, new TreeNode(9, new TreeNode(9), new TreeNode(9)), new TreeNode(6)))); // [9,9,6,9,9] => false
+// console.log("Test Case1: ", isUnivalTree(tree1));
+// console.log("Test Case2: ", isUnivalTree(tree2));
+// console.log("Test Case3: ", isUnivalTree(new TreeNode(9, new TreeNode(9, new TreeNode(9), new TreeNode(9)), new TreeNode(6)))); // [9,9,6,9,9] => false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Convert Sorted Array to Binary Search Tree */
+function sortedArrayToBST (nums) {
+  if (!nums.length) return null
+
+  let halfPoint = Math.floor(nums.length / 2)
+  const node = new TreeNode(nums[halfPoint])
+
+  node.left = sortedArrayToBST(nums.slice(0, halfPoint))    // recursive call to add nodes to left and right side
+  node.right = sortedArrayToBST(nums.slice(halfPoint + 1))  // recursive call to add nodes to left and right side
+
+  return node
+}
+
+console.log("Test Case1: ", sortedArrayToBST([-10, -3, 0, 5, 9]));
+
+
+
+
+
+
+
+
 
 
 
@@ -141,6 +184,62 @@ function isSubtree (root, subroot) {
 // const node3 = new TreeNode(3, node4, node5)
 
 // console.log("Test Case1:", isSubtree(node3, node4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Two Sum IV - Input is a BST */
+function findTarget(root, k) {
+  let stack = [root]
+  let nodeVals = []
+  while (stack.length) {
+    let currentNode = stack.pop()
+    nodeVals.push(currentNode.val)
+    if (currentNode.left) stack.push(currentNode.left)
+    if (currentNode.right) stack.push(currentNode.right)
+  }
+  for (let i = 0; i < nodeVals.length - 1; i++) {
+    for (let j = 0; j < nodeVals.length; j++) {
+      if (i < j && nodeVals[i] + nodeVals[j] === k) return true
+    }
+  }
+  return false
+}
+
+const tree5 = 
+  new TreeNode(
+    5, 
+    new TreeNode(
+      3, new TreeNode(2), new TreeNode(4)
+    ), 
+    new TreeNode(
+      6, null, new TreeNode(7)
+    )
+  )
+
+// console.log("Test Case1: ", findTarget(tree5, 9));
+// console.log("Test Case2: ", findTarget(tree5, 28));
 
 
 
