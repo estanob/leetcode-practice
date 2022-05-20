@@ -1,5 +1,3 @@
-/** Same Tree */
-
 class TreeNode {
   constructor (val, left, right) {
     this.val = (val === undefined ? 0 : val);
@@ -30,14 +28,42 @@ class Node {
 
 
 
+
+/** Same Tree */
 var isSameTree = function(p, q) {
-  const pArr = [p.val, p.left, p.right];
-  const qArr = [q.val, q.left, q.right];
-  let isSame = true;
-  for (let i = 0; i < pArr.length; i++) {
-    if (pArr[i] !== qArr[i]) isSame = false;
-  }
-  return isSame;
+  // const pArr = [p.val, p.left, p.right];
+  // const qArr = [q.val, q.left, q.right];
+  // let isSame = true;
+  // for (let i = 0; i < pArr.length; i++) {
+  //   if (pArr[i] !== qArr[i]) isSame = false;
+  // }
+  // return isSame;
+
+
+  /**
+   * check current node
+   *      if same value, continue
+   * 
+   * return p.val === q.val && 
+   * 
+   * when do we return false?
+   *      if value of current is not equal
+   *      if one node is null but the other is not
+   * 
+   * 
+   * 
+   * 
+   * when do we return true?
+   *    if both nodes are null, return true
+   */
+
+
+
+  
+  if (!p && !q) return true
+  if (!p && q || p && !q) return false
+  if (p.val !== q.val) return false
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
 };
 
 // const p1 = new TreeNode (1, 2, 3), q1 = new TreeNode (1, 2, 3);
@@ -227,16 +253,16 @@ function findTarget(root, k) {
   return false
 }
 
-const tree5 = 
-  new TreeNode(
-    5, 
-    new TreeNode(
-      3, new TreeNode(2), new TreeNode(4)
-    ), 
-    new TreeNode(
-      6, null, new TreeNode(7)
-    )
-  )
+// const tree5 = 
+//   new TreeNode(
+//     5, 
+//     new TreeNode(
+//       3, new TreeNode(2), new TreeNode(4)
+//     ), 
+//     new TreeNode(
+//       6, null, new TreeNode(7)
+//     )
+//   )
 
 // console.log("Test Case1: ", findTarget(tree5, 9));
 // console.log("Test Case2: ", findTarget(tree5, 28));
@@ -1138,13 +1164,15 @@ function isValidBST(root) {
 
 
 
+  /*
   return checkBST(root)
   function checkBST(root , min = -Infinity , max = +Infinity){
-      console.log("Root: ", root);
-      if(!root)return true;
-      if(root.val <= min ||  root.val >= max) return false
-      return checkBST(root.left , min , root.val ) && checkBST(root.right , root.val , max )
+    console.log("Root: ", root);
+    if(!root)return true;
+    if(root.val <= min ||  root.val >= max) return false
+    return checkBST(root.left , min , root.val ) && checkBST(root.right , root.val , max )
   }
+  */
   
   
   
@@ -1159,6 +1187,18 @@ function isValidBST(root) {
 //   return true
 // }
   // return helper(root, null, null);
+
+
+
+
+
+
+
+  // base case
+  if (!root.left && !root.right) return true
+  if ((root.left && root.left.val > root.val) || (root.right && root.right.val < root.val)) return false
+  if ((root.left && root.left.val < root.val) || (root.right && root.right.val > root.val)) return true
+  return isValidBST(root.left) && isValidBST(root.right)
 };
 
 // var helper = function(node, lower, upper) {
@@ -1175,17 +1215,17 @@ function isValidBST(root) {
 //     return true;
 // };
 
-// const node3 = new TreeNode(3)
-// const node1 = new TreeNode(1)
-// const tree2 = new TreeNode(2, node1, node3)
+const node3 = new TreeNode(3)
+const node1 = new TreeNode(1)
+const tree2 = new TreeNode(2, node1, node3)
 
-// const node6 = new TreeNode(6)
-// const node4 = new TreeNode(4, node3, node6)
-// const tree5 = new TreeNode(5, node1, node4)
+const node6 = new TreeNode(6)
+const node4 = new TreeNode(4, node3, node6)
+const tree5 = new TreeNode(5, node1, node4)
 
-// console.log("Test Case1:", isValidBST(tree2));
-// console.log("Test Case2:", isValidBST(tree5));
-// console.log("Test Case3:", isValidBST(new TreeNode(2, new TreeNode(2),new TreeNode(2))));
+console.log("Test Case1:", isValidBST(tree2));
+console.log("Test Case2:", isValidBST(tree5));
+console.log("Test Case3:", isValidBST(new TreeNode(2, new TreeNode(2),new TreeNode(2))));
 
 
 
