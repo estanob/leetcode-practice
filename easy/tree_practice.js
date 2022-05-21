@@ -1195,11 +1195,60 @@ function isValidBST(root) {
 
 
   // base case
-  if (!root.left && !root.right) return true
-  if ((root.left && root.left.val > root.val) || (root.right && root.right.val < root.val)) return false
-  if ((root.left && root.left.val < root.val) || (root.right && root.right.val > root.val)) return true
-  return isValidBST(root.left) && isValidBST(root.right)
+  // if (!root) return true
+  // if ((root.left && root.left.val >= root.val) || (root.right && root.right.val <= root.val)) return false
+  // if ((root.left && root.left.val <= root.val) || (root.right && root.right.val >= root.val)) return true
+  // return isValidBST(root.left) && isValidBST(root.right)
+  
+  // if (!root) return true
+  // if (root.left.val >= root.val || root.right.val <= root.val) return false
+  // let parentValue = root.val
+  // return validForParent(root.left, parentValue, null) && validForParent(root.right, null, parentValue)
+  // return validForParent(root.left, "left", parentValue) && validForParent(root.right, "right", parentValue)
+  return bstValid(root)
+  function bstValid(root, min = -Infinity, max = Infinity) {
+    if (!root) return true
+    // if (min) console.log("Min: ", min.val);
+    // if (max) console.log("Max: ", max.val);
+    // console.log("Root: ", root.val);
+    if ((min && root.val <= min.val) || (max && root.val >= max.val)) return false
+    return bstValid(root.left, min, root) && bstValid(root.right, root, max)
+    // pass in root as max because all values to the left should be less
+    // pass in root as min because all values to the right should greater
+  }
+}
+
+// function validForParent (node, minValue = -Infinity, maxValue = Infinity) {
+// function validForParent (node, side, parentValue) {
+  // if (!node.left && !node.right) return true
+  // if (node.left && node.left.val >= parentValue || node.right && node.right.val <= parentValue) return false
+  // return true
+  // console.log("Parent Value", parentValue, "Node: ", node, "Side: ", side);
+  // if (!node) return true
+
+  // if ((side === "left" && node.val >= parentValue) || (side === "right" && node.val <= parentValue)) return false
+  // if (!maxValue && node.left.val >= minValue && node.right.val >= minValue) return false
+  // if (!minValue && node.left.val <= maxValue && node.right.val <= maxValue) return false
+  // let leftCheck = node.left ? validForParent(node.left, "left", parentValue) : false
+  // let rightCheck = node.right ? validForParent(node.right, "right", parentValue) : false
+  // console.log("Left Check: ", leftCheck, "Right Check: ", rightCheck);
+  // return leftCheck && rightCheck
+  // return validForParent(node.left, "left", parentValue) && validForParent(node.right, "right", parentValue)
+  // let leftCheck = validForParent(node.left, parentValue, maxValue)
+  // let rightCheck = validForParent(node.right, null, parentValue)
+  // return leftCheck && rightCheck
+// }
+
+// From Leetcoder
+/* 
+var isValidBST = function(root, min=null, max=null) {
+  if (!root) return true;
+  if (min && root.val <= min.val) return false;
+  if (max && root.val >= max.val) return false;
+  console.log("Root Value:", root.val, "Min", min, "Max", max)
+  return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
 };
+*/
 
 // var helper = function(node, lower, upper) {
 //     if (node == null) return true;
@@ -1223,11 +1272,13 @@ const node6 = new TreeNode(6)
 const node4 = new TreeNode(4, node3, node6)
 const tree5 = new TreeNode(5, node1, node4)
 
-console.log("Test Case1:", isValidBST(tree2));
-console.log("Test Case2:", isValidBST(tree5));
-console.log("Test Case3:", isValidBST(new TreeNode(2, new TreeNode(2),new TreeNode(2))));
-
-
+// console.log("Test Case1:", isValidBST(tree2));
+// console.log("Test Case2:", isValidBST(tree5));
+// console.log("Test Case3:", isValidBST(new TreeNode(2, new TreeNode(2),new TreeNode(2))));
+// console.log("Test Case Leetcode:", isValidBST(new TreeNode(5, new TreeNode(4), new TreeNode(6, new TreeNode(3), new TreeNode(7))))) // false [5,4,6,null,null,3,7]
+console.log(
+  isValidBST(new TreeNode(1000, new TreeNode(7, new TreeNode(4), new TreeNode(100, new TreeNode(1000), new TreeNode(5))), new TreeNode(1200)))
+);
 
 
 
