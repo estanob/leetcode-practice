@@ -794,25 +794,25 @@ function maxDepthNAry (root) {
     max = Math.max(max, maxDepthNAry(child))  // recursive call 
     // this will reassign the max depth level
   }
-  return 1 + max  // + 1 because the base case is 0 
+  return 1 + max  // + 1 because the base case is to return 0 
 }
 
-// const node10 = new Node(10)
-// const node13 = new Node(13)
-// const node9 = new Node(9 [node13])
-// const node5 = new Node(5, [node9, node10])
-// const node12 = new Node(12)
-// const node8 = new Node(8, [node12])
-// const node4 = new Node(4, [node8])
-// const node14 = new Node(14)
-// const node11 = new Node(11, [node14])
-// const node7 = new Node(7, [node11])
-// const node6 = new Node(6)
-// const node3 = new Node(3, [node6, node7])
-// const node2 = new Node(2)
-// const tree1 = new Node(1, [node2, node3, node4, node5])
+const node10 = new Node(10)
+const node13 = new Node(13)
+const node9 = new Node(9 [node13])
+const node5 = new Node(5, [node9, node10])
+const node12 = new Node(12)
+const node8 = new Node(8, [node12])
+const node4 = new Node(4, [node8])
+const node14 = new Node(14)
+const node11 = new Node(11, [node14])
+const node7 = new Node(7, [node11])
+const node6 = new Node(6)
+const node3 = new Node(3, [node6, node7])
+const node2 = new Node(2)
+const tree1 = new Node(1, [node2, node3, node4, node5])
 
-// console.log("Test Case: ", maxDepthNAry(tree1)); // => 5
+console.log("Test Case: ", maxDepthNAry(tree1)); // => 5
 
 
 
@@ -1264,21 +1264,21 @@ var isValidBST = function(root, min=null, max=null) {
 //     return true;
 // };
 
-const node3 = new TreeNode(3)
-const node1 = new TreeNode(1)
-const tree2 = new TreeNode(2, node1, node3)
+// const node3 = new TreeNode(3)
+// const node1 = new TreeNode(1)
+// const tree2 = new TreeNode(2, node1, node3)
 
-const node6 = new TreeNode(6)
-const node4 = new TreeNode(4, node3, node6)
-const tree5 = new TreeNode(5, node1, node4)
+// const node6 = new TreeNode(6)
+// const node4 = new TreeNode(4, node3, node6)
+// const tree5 = new TreeNode(5, node1, node4)
 
 // console.log("Test Case1:", isValidBST(tree2));
 // console.log("Test Case2:", isValidBST(tree5));
 // console.log("Test Case3:", isValidBST(new TreeNode(2, new TreeNode(2),new TreeNode(2))));
 // console.log("Test Case Leetcode:", isValidBST(new TreeNode(5, new TreeNode(4), new TreeNode(6, new TreeNode(3), new TreeNode(7))))) // false [5,4,6,null,null,3,7]
-console.log(
-  isValidBST(new TreeNode(1000, new TreeNode(7, new TreeNode(4), new TreeNode(100, new TreeNode(1000), new TreeNode(5))), new TreeNode(1200)))
-);
+// console.log(
+//   isValidBST(new TreeNode(1000, new TreeNode(7, new TreeNode(4), new TreeNode(100, new TreeNode(1000), new TreeNode(5))), new TreeNode(1200)))
+// );
 
 
 

@@ -1,3 +1,83 @@
+/** Number of Students Unable to Eat Lunch */
+function countStudents (students, sandwiches) {
+  while (students.length > 0) {
+    if (students[0] === sandwiches[0]) {
+      students.shift()
+      sandwiches.shift()
+    } else {
+      if (noStudentWants(students, sandwiches[0])) {
+        return students.length
+      } else {
+        let movingStudent = students.shift()
+        students.push(movingStudent)
+      }
+    }
+  }
+  return 0;
+}
+
+function noStudentWants (students, topSandwich) {
+  for (let i = 0; i < students.length; i++) {
+    if (students[i] === topSandwich) {
+      return false
+    }
+  }
+  return true
+}
+
+let students1 = [1,1,0,0], sandwiches1 = [0,1,0,1]
+let students2 = [1,1,1,0,0,1], sandwiches2 = [1,0,0,0,1,1]
+
+console.log("Test Case1", countStudents(students1, sandwiches1));
+console.log("Test Case2", countStudents(students2, sandwiches2));
+
+/**
+ * 
+ * [1, 1, 1, 0, 0, 1]
+ * [1, 0, 0, 0, 1, 1]
+ * 
+ * 
+ * [1, 1, 0, 0, 1]
+ * [0, 0, 0, 1, 1]
+ * 
+ * 
+ * [1, 0, 0, 1, 1]
+ * [0, 0, 0, 1, 1]
+ * 
+ * 
+ * [0, 0, 1, 1, 1]
+ * [0, 0, 0, 1, 1]
+ * 
+ * 
+ * [0, 1, 1, 1]
+ * [0, 0, 1, 1]
+ * 
+ * [1, 1, 1]
+ * [0, 1, 1]
+ * 
+ * return 3
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** Valid Parentheses */
 function isValid(s) {
   let sArr = s.split("")

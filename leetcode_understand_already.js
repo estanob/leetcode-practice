@@ -1,3 +1,59 @@
+class TreeNode {
+  constructor (val, left, right) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+  }
+}
+
+/** Validate Binary Tree */
+function isValidBST (root) {
+  return treeIsValid(root, min = -Infinity, max = Infinity)
+  function treeIsValid(node, min, max) {
+    if (!node) return true;
+    if (max && node.val >= max.val) return false  // no left or right because we're comparing the current node
+    if (min && node.val <= min.val) return false  //        to the min and max
+    return treeIsValid(node.left, min, node) && treeIsValid(node.right, node, max)
+  }
+}
+
+const node3 = new TreeNode(3)
+const node1 = new TreeNode(1)
+const tree2 = new TreeNode(2, node1, node3)
+
+const node6 = new TreeNode(6)
+const node4 = new TreeNode(4, node3, node6)
+const tree5 = new TreeNode(5, node1, node4)
+
+console.log("Test Case1:", isValidBST(tree2)); // true
+console.log("Test Case2:", isValidBST(tree5)); // false
+console.log("Test Case3:", isValidBST(new TreeNode(2, new TreeNode(2),new TreeNode(2)))); // false
+console.log("Test Case Leetcode:", isValidBST(new TreeNode(5, new TreeNode(4), new TreeNode(6, new TreeNode(3), new TreeNode(7))))) // false [5,4,6,null,null,3,7]
+console.log(
+  "My made up tree:",
+  isValidBST(new TreeNode(1000, new TreeNode(7, new TreeNode(4), new TreeNode(100, new TreeNode(1000), new TreeNode(5))), new TreeNode(1200)))
+); // false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** Contains Duplicate */
 // let nums1 = [1,2,3,1];
 // let nums2 = [1,2,3,4];
@@ -139,14 +195,14 @@ var rob = function (nums) {
 
 
 /** Word Break */
-let s1 = "leetcode"
-let wordDict1 = ["leet","code"];                     // true
+// let s1 = "leetcode"
+// let wordDict1 = ["leet","code"];                     // true
 
-let s2 = "applepenapple"
-let wordDict2 = ["apple","pen"];               //  true  
+// let s2 = "applepenapple"
+// let wordDict2 = ["apple","pen"];               //  true  
 
-let s3 = "catsandog"
-let wordDict3 = ["cats","dog","sand","and","cat"]  // false
+// let s3 = "catsandog"
+// let wordDict3 = ["cats","dog","sand","and","cat"]  // false
 
 
 var wordBreak = function (s, wordDict) {
@@ -174,6 +230,6 @@ var wordBreak = function (s, wordDict) {
   return true;
 }
 
-console.log("Test Case1:", wordBreak(s1, wordDict1));
-console.log("Test Case2:", wordBreak(s2, wordDict2));
-console.log("Test Case3:", wordBreak(s3, wordDict3));
+// console.log("Test Case1:", wordBreak(s1, wordDict1));
+// console.log("Test Case2:", wordBreak(s2, wordDict2));
+// console.log("Test Case3:", wordBreak(s3, wordDict3));
