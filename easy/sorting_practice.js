@@ -1,3 +1,45 @@
+/** Keep Multiplying Found Values By Two */
+const findFinalValue = (nums, original) => {
+  if (!nums.includes(original)) return original
+  let foundValue = original
+  while (nums.includes(foundValue)) foundValue *= 2
+  return foundValue
+}
+
+let nums1 = [5,3,6,1,12], original1 = 3;
+let nums2 = [2,7,9], original2 = 4;
+
+console.log("Test Case1:", findFinalValue(nums1, original1));
+console.log("Test Case2:", findFinalValue(nums2, original2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** Majority Element */
 var majorityElement = function (nums) {
   let numsObj = {};
@@ -20,8 +62,8 @@ var majorityElement = function (nums) {
   return numKey;
 };
 
-let nums1 = [3,2,3];
-let nums2 = [2,2,1,1,1,2,2];
+// let nums1 = [3,2,3];
+// let nums2 = [2,2,1,1,1,2,2];
 
-console.log("Test Case1:", majorityElement(nums1));
-console.log("Test Case2:", majorityElement(nums2));
+// console.log("Test Case1:", majorityElement(nums1));
+// console.log("Test Case2:", majorityElement(nums2));
