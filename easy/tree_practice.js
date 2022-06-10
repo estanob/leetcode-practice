@@ -301,6 +301,25 @@ function findTarget(root, k) {
 
 /** Binary Tree Level Order Traversal */
 function levelOrder (root) {
+  /*
+  if (!root) return []
+  let levels = []
+  let queue = [root]
+  while (queue.length > 0) {
+    let indivLevel = []
+    let size = queue.length
+    while (size > 0) {
+      size--
+      let currentNode = queue.shift()
+      indivLevel.push(currentNode.val)
+      if (currentNode.left) queue.push(currentNode.left)
+      if (currentNode.right) queue.push(currentNode.right)
+    }
+    levels.push(indivLevel)
+  }
+  return levels
+  */
+
   if (!root) return []
   let levels = []
   let queue = [root]
@@ -686,7 +705,7 @@ var maxDepth = function(root) {
   
   
 
-  // BFS iterative
+  /* BFS iterative */
   // /*
   let depth = 0
   let queue = [root]
@@ -732,28 +751,28 @@ var maxDepth = function(root) {
   // return depth
 };
 
-// const node7 = new TreeNode(7, null, null)
-// const node15 = new TreeNode(15, null, null)
-// const node20 = new TreeNode(20, node15, node7)
-// const node9 = new TreeNode(9, null, null)
-// const tree3 = new TreeNode(3, node9, node20)
+const node7 = new TreeNode(7, null, null)
+const node15 = new TreeNode(15, null, null)
+const node20 = new TreeNode(20, node15, node7)
+const node9 = new TreeNode(9, null, null)
+const tree3 = new TreeNode(3, node9, node20)
 
-// const node2 = new TreeNode(2)
-// const tree1 = new TreeNode(1, null, node2)
+const node2 = new TreeNode(2)
+const tree1 = new TreeNode(1, null, node2)
 
 
-// const nodeFive = new TreeNode(5)
-// const nodeFour = new TreeNode(4)
-// const nodeThree = new TreeNode(3, null, nodeFive)
-// const nodeTwo = new TreeNode(2, nodeFour, null)
-// const treeOne = new TreeNode(1, nodeTwo, nodeThree)
+const nodeFive = new TreeNode(5)
+const nodeFour = new TreeNode(4)
+const nodeThree = new TreeNode(3, null, nodeFive)
+const nodeTwo = new TreeNode(2, nodeFour, null)
+const treeOne = new TreeNode(1, nodeTwo, nodeThree)
 // console.log("Test Case:", );
 // console.log("Tree:", tree3)
 // console.log(maxDepth(tree3))
 // console.log(maxDepth(tree1))
 // console.log(maxDepth(node7))
 // console.log(maxDepth(node20))
-// console.log("Tree One: ", maxDepth(treeOne));
+console.log("Tree One: ", maxDepth(treeOne));
 
 
 
@@ -797,22 +816,22 @@ function maxDepthNAry (root) {
   return 1 + max  // + 1 because the base case is to return 0 
 }
 
-const node10 = new Node(10)
-const node13 = new Node(13)
-const node9 = new Node(9 [node13])
-const node5 = new Node(5, [node9, node10])
-const node12 = new Node(12)
-const node8 = new Node(8, [node12])
-const node4 = new Node(4, [node8])
-const node14 = new Node(14)
-const node11 = new Node(11, [node14])
-const node7 = new Node(7, [node11])
-const node6 = new Node(6)
-const node3 = new Node(3, [node6, node7])
-const node2 = new Node(2)
-const tree1 = new Node(1, [node2, node3, node4, node5])
+// const node10 = new Node(10)
+// const node13 = new Node(13)
+// const node9 = new Node(9 [node13])
+// const node5 = new Node(5, [node9, node10])
+// const node12 = new Node(12)
+// const node8 = new Node(8, [node12])
+// const node4 = new Node(4, [node8])
+// const node14 = new Node(14)
+// const node11 = new Node(11, [node14])
+// const node7 = new Node(7, [node11])
+// const node6 = new Node(6)
+// const node3 = new Node(3, [node6, node7])
+// const node2 = new Node(2)
+// const tree1 = new Node(1, [node2, node3, node4, node5])
 
-console.log("Test Case: ", maxDepthNAry(tree1)); // => 5
+// console.log("Test Case: ", maxDepthNAry(tree1)); // => 5
 
 
 
