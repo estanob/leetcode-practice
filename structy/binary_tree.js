@@ -144,7 +144,7 @@ const treeSum = (root) => {
   
   let sum = 0
   const queue = [root]
-  
+
   while (queue.length > 0) {
     const currentNode = queue.shift()
     sum += currentNode.val
@@ -153,4 +153,15 @@ const treeSum = (root) => {
   }
   
   return sum;
+};
+
+
+
+
+
+
+const treeIncludes = (root, target) => {
+  if (!root) return false
+  if (root.val === target) return true
+  return treeIncludes(root.left, target) || treeIncludes(root.right, target)
 };
