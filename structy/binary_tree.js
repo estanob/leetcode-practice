@@ -165,3 +165,35 @@ const treeIncludes = (root, target) => {
   if (root.val === target) return true
   return treeIncludes(root.left, target) || treeIncludes(root.right, target)
 };
+
+
+
+
+
+const howHigh = (node) => {
+  if (!node) return -1;
+  let leftHeight = howHigh(node.left)
+  let rightHeight = howHigh(node.right)
+  return 1 + Math.max(leftHeight, rightHeight)
+};
+
+
+
+
+
+const treeValueCount = (root, target) => {
+  if (!root) return 0
+
+  let count = 0
+  let queue = [root]; // traverse every single node
+  
+  while (queue.length > 0) {
+    const currentNode = queue.shift()
+
+    if (currentNode.val === target) count++ // any time currentNode equals target, increse count
+    if (currentNode.left) queue.push(currentNode.left)
+    if (currentNode.right) queue.push(currentNode.right)
+  }
+  
+  return count
+};
